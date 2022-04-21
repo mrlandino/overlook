@@ -4,11 +4,116 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>Overlook Hotel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alike&family=Raleway:wght@200&display=swap" rel="stylesheet">
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
+  <section class="landing-page hidden">
+    <div class="overlook-hotel-container">
+      <h1>Overlook Hotel</h1>
+    </div>
+    <div class="sign-in-container">
+      <form class="sign-in">
+        <div class="username-container">
+          <label class="username-label">username</label>
+          <input class="username-input" type="input"></input>
+        </div>
+        <div class="password-container">
+          <label class="password-label">password</label>
+          <input class="password-input" type="input"></input>
+          <button class="sign-in-button">sign in</button>
+        </div>
+      </form>
+    </div>
+  </section>
+  <section class="customer-page">
+    <nav>
+      <div class="customer-greeting-container">
+        <div class="customer-welcome">
+          <h3>Welcome</h3>
+        </div>
+        <div class="customer-name">
+          <h2 class="user-name">Ross Landino</h2>
+        </div>
+      </div>
+      <div class="button-container">
+        <button class="book-a-room">Book a Room</button>
+        <button class="logout">Logout</button>
+      </div>
+    </nav>
+    <main class="customer-bookings">
+      <div class="all-booking-title-container">
+        <h2>All Bookings</h2>
+      </div>
+      <div class="customer-numbers-container">
+          <div class="total-bookings-container">
+            <p class="total-bookings">Total Bookings: 0</p>
+            <!-- <p class="num-bookings">0</p> -->
+          </div>
+          <div class="total-spent-container">
+            <p class="total-spent">Total Spent: $1500</p>
+            <!-- <p class="num-spent">$0<p> -->
+          </div>
+      </div>
+      <section class="customer-bookings-display-container">
+        <div class="booking-card" id=1>
+          <div class="date-room">
+            <p>Date: 12/25/22</p>
+            <p>Room #: 20</p>
+          </div>
+          <div class="booking-details">
+            <p>Room Type: Single Room</p>
+            <p>Bidet: Yes</p>
+            <p>Bed Size: King</p>
+            <p>Number of Beds: 1</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </section>
+  <section class="book-a-room-page hidden">
+    <nav>
+      <div class="customer-greeting-container">
+        <div class="customer-welcome">
+          <h3>Welcome</h2>
+        </div>
+        <div class="customer-name">
+          <h2>UserName</h3>
+        </div>
+        <button class="dashboard">My Bookings</button>
+        <button class="logout">Logout</button>
+    </nav>
+    <main class="customer-bookings">
+      <div class="book-a-room-title-container">
+        <h1>Book a Room</h1>
+      </div>
+      <div class="select-date-and-type-container">
+        <label class="select-date-label">Select a Date</label>
+        <input class="select-date-input" type="date"></input>
+        <div class="dropdown-room-type" id="dropdown">
+          <p tabindex="0" class="type-hover" data-type="residential suite">residential suite</p>
+          <p tabindex="0" class="type-hover" data-type="junior suite">junior suite</p>
+          <p tabindex="0" class="type-hover" data-type="single room">single room</p>
+          <p tabindex="0" class="type-hover" data-type="suite">suite</p>
+        </div>
+      </div>
+      <section class="customer-bookings-display-container">
+        <div class="booking-card" id=1>
+          <div class="date-room">
+            <p>Date: 12/25/22</p>
+            <p>Room #: 20</p>
+          </div>
+          <div class="booking-details">
+            <p>Room Type: Single Room</p>
+            <p>Bidet: Yes</p>
+            <p>Bed Size: King</p>
+            <p>Number of Beds: 1</p>
+          </div>
+        </div>
+      </section>
+    </main>
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
 
