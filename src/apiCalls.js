@@ -17,5 +17,7 @@ const getAllData = (id) {
   ]);
 };
 
+//need to post new data here with new functions
+//error handling function?
 
 export { getAllData };
