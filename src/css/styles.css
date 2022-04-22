@@ -1,3 +1,438 @@
+* {
+  font-family: 'Alike', serif;
+  margin: 0px;
+}
 body {
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  display: flex;
+  width: 100vw;
+  overflow: hidden;
+  height: 100vh;
+
+}
+.landing-page,
+.customer-page,
+.book-a-room-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* LANDING PAGE */
+
+.landing-page {
+  background-image: url("/Users/mrlandino/turing/2module/overlook/src/images/07292017_Landino_DSC8535.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+h1 {
+  position: absolute;
+  color: #F1B643;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 175px;
+  line-height: 161px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.overlook-hotel-container {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-in-container {
+  height: 20%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.sign-in {
+  display: flex;
+  height: 100%;
+  width: 60%;
+  margin-top: 20px;
+  justify-content: space-around;
+  flex-direction: row;
+  align-content: flex-end;
+}
+
+.username-label,
+.password-label,
+.select-date-label,
+.dropdown-filter-label {
+  color: white;
+  font-size: 25px;
+}
+
+.username-input,
+.password-input {
+  height: 30px;
+  width: 200px;
+  background-color: white;
+  opacity: 50%;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.sign-in-button {
+  height: 30px;
+  width: 85px;
+  opacity: 80%;
+  margin-left: 10px;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.sign-in-button:hover {
+  background-color: #F1B643;
+  transform: scale(1.1);
+  transition: .2s;
+  cursor: pointer;
+}
+
+/* CUSTOMER PAGE */
+
+.customer-page {
+  background-image: url("/Users/mrlandino/turing/2module/overlook/src/images/08042017_Landino_DSC0590.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+}
+
+nav {
+  /* border: solid yellow 2px; */
+  display: flex;
+  height: 20%;
+  width: 100%;
+
+  align-items: flex-start;
+
+}
+
+.customer-greeting-container {
+  height: 100%;
+  width: 80%;
+  /* border: solid blue 2px; */
+  display: flex;
+  flex-direction: column;
+  align-content:space-between;
+  margin-bottom: 0px;
+
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* border: solid magenta 2px; */
+  height: 100%;
+  width: 20%;
+}
+
+.customer-welcome {
+  /* border: solid red 2px; */
+  display: flex;
+  height: 30%;
+  margin-top: 20px;
+  margin-left: 30px;
+  font-size: 40px;
+}
+.customer-name {
+  /* border: solid red 2px; */
+  display: flex;
+  height: 45%;
+  margin-left: 50px;
+}
+
+.user-name {
+  font-size: 70px;
+}
+
+.book-a-room,
+.logout {
+  height: 50px;
+  width: 200px;
+  opacity: 80%;
+  margin-left: 10px;
+  background-color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 20px;
+  font-weight: bolder;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.book-a-room:hover,
+.logout:hover {
+  background-color: #F1B643;
+  transform: scale(1.05);
+  transition: .2s;
+  cursor: pointer;
+}
+
+/* MAIN SECTION */
+.customer-bookings {
+  /* border: solid green 4px; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  height: 80%;
+  width: 100%;
+  align-items: center;
+}
+
+.all-booking-title-container,
+.book-a-room-title-container {
+  /* border: solid red 3px; */
+  width: 100%;
+  height: 10%;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+.customer-numbers-container,
+.select-date-and-type-container {
+  /* border: solid blue 3px; */
+  border-top: solid black 3px;
+  border-bottom: solid black 3px;
+  width: 90%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: row;
+}
+
+.total-bookings-container,
+.select-date-container,
+.select-room-type-container {
+  height: 100%;
+  width: 25%;
+  margin-right: 50px;
+  /* border: solid green 2px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.total-spent-container {
+  height: 100%;
+  width: 25%;
+  margin-left: 50px;
+  /* border: solid magenta 2px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+
+.total-bookings,
+.num-bookings,
+.total-spent,
+.num-spent {
+  font-size: 24px;
+}
+
+.customer-bookings-display-container,
+.all-bookings-display-container {
+  /* border: solid yellow 3px; */
+  /* border-bottom: solid black 2px; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: scroll;
+  justify-content: space-around;
+  height: 80%;
+  width: 100%;
+}
+
+.booking-details-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90%;
+  /* border: solid pink 3px; */
+}
+
+.cost-container {
+  display: flex;
+
+  justify-content: center;
+  /* border: solid blue 3px; */
+  font-size: 40px;
+  padding-top: 10px;
+  padding-right: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
+  /* margin-right: 20pxs; */
+}
+
+.booking-card {
+  display: flex;
+  flex-direction: column;
+  /* border: solid blue 3px; */
+
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, .5);
+  backdrop-filter: blur(5px);
+
+  border-radius: 15px;
+  height: 140px;
+  width: 500px;
+  margin: 50px;
+  padding: 25px;
+}
+
+.date-room,
+.room-cost {
+  display: flex;
+  justify-content:space-between;
+  border-bottom: solid black 2px;
+  margin-right: 20px;
+  /* border: solid red 3px; */
+  height: 20%;
+
+}
+
+.cost,
+.room {
+  margin-bottom: 10px;
+  display: flex;
+  font-size: 20px;
+}
+
+.book-a-room-page {
+  background-image: url("/Users/mrlandino/turing/2module/overlook/src/images/08032017_Landino_DSC0461.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+}
+
+.cost-per-night-container {
+  display: flex;
+  flex-direction: column;
+}
+.cost-container {
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.book-room-container {
+  margin-bottom: 25px;
+}
+
+.book-room {
+  height: 50px;
+  width: 150px;
+  opacity: 80%;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.select-date-container {
+  /* border: solid red 3px; */
+  width: 35%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.select-date-label,
+.select-room-label,
+.dropdown-filter-label {
+  color: black;
+}
+
+.select-date-input {
+  text-align: center;
+  height: 35px;
+  width: 250px;
+  background-color: white;
+  opacity: 60%;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.info:hover
+.dropdown-room-type {
+  display: inline-block;
+  position: relative;
+}
+
+.select-room-type-container {
+  position: relative;
+  display: flex;
+
+  /* border: solid blue 3px; */
+  width: 35%;
+  height: 100%;
+  justify-content: space-around;
+}
+
+.dropdown-filter-input {
+  align-items: center;
+  text-align: center;
+  height: 35px;
+  width: 250px;
+  background-color: white;
+  opacity: 60%;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin: 20px;
+}
+
+.dropdown-room-type {
+  display: none;
+  position: relative;
+  z-index: 4;
+  margin: 0;
+  padding: 5px 20px;
+  text-align: center;
+}
+
+.dropdown-filter-input:hover
+.dropdown-room-type {
+  display: inline-block;
+  position: relative;
+}
+
+
+.hidden {
+  display: none;
 }

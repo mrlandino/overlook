@@ -4,11 +4,357 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>Overlook Hotel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alike&family=Raleway:wght@200&display=swap" rel="stylesheet">
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
+  <section class="landing-page hidden">
+    <div class="overlook-hotel-container">
+      <h1>Overlook Hotel</h1>
+    </div>
+    <div class="sign-in-container">
+      <form class="sign-in">
+        <div class="username-container">
+          <label class="username-label">username</label>
+          <input class="username-input" type="input"></input>
+        </div>
+        <div class="password-container">
+          <label class="password-label">password</label>
+          <input class="password-input" type="input"></input>
+          <button class="sign-in-button">sign in</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="customer-page">
+    <nav>
+      <div class="customer-greeting-container">
+        <div class="customer-welcome">
+          <h3>Welcome</h3>
+        </div>
+        <div class="customer-name">
+          <h2 class="user-name">Ross Landino</h2>
+        </div>
+      </div>
+      <div class="button-container">
+        <button class="book-a-room">Book a Room</button>
+        <button class="logout">Logout</button>
+      </div>
+    </nav>
+    <main class="customer-bookings">
+      <div class="all-booking-title-container">
+        <h2>My Bookings</h2>
+      </div>
+      <div class="customer-numbers-container">
+          <div class="total-bookings-container">
+            <p class="total-bookings">Total Bookings: 0</p>
+            <!-- <p class="num-bookings">0</p> -->
+          </div>
+          <div class="total-spent-container">
+            <p class="total-spent">Total Spent: $1500</p>
+            <!-- <p class="num-spent">$0<p> -->
+          </div>
+      </div>
+      <section class="customer-bookings-display-container">
+        <!-- USE BELOW EXAMPLE -->
+        <div class="booking-card" id=1>
+          <div class="date-room">
+            <div class="date">
+              <p>Date: 10/6/22</p>
+            </div>
+            <div class="room">
+              <p>Room #: 22</p>
+            </div>
+          </div>
+          <div class="booking-details-container">
+            <div class="booking-details">
+              <p>Room Type: Single Room</p>
+              <p>Bidet: Yes</p>
+              <p>Bed Size: King</p>
+              <p>Number of Beds: 1</p>
+            </div>
+            <div class="cost-container">
+              <p>$800</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-card" id=2>
+          <div class="date-room">
+            <div class="date">
+              <p>Date: 10/6/22</p>
+            </div>
+            <div class="room">
+              <p>Room #: 22</p>
+            </div>
+          </div>
+          <div class="booking-details-container">
+            <div class="booking-details">
+              <p>Room Type: Single Room</p>
+              <p>Bidet: Yes</p>
+              <p>Bed Size: King</p>
+              <p>Number of Beds: 1</p>
+            </div>
+            <div class="cost-container">
+              <p>$800</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-card" id=3>
+          <div class="date-room">
+            <div class="date">
+              <p>Date: 10/6/22</p>
+            </div>
+            <div class="room">
+              <p>Room #: 22</p>
+            </div>
+          </div>
+          <div class="booking-details-container">
+            <div class="booking-details">
+              <p>Room Type: Single Room</p>
+              <p>Bidet: Yes</p>
+              <p>Bed Size: King</p>
+              <p>Number of Beds: 1</p>
+            </div>
+            <div class="cost-container">
+              <p>$800</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-card" id=4>
+          <div class="date-room">
+            <div class="date">
+              <p>Date: 10/6/22</p>
+            </div>
+            <div class="room">
+              <p>Room #: 22</p>
+            </div>
+          </div>
+          <div class="booking-details-container">
+            <div class="booking-details">
+              <p>Room Type: Single Room</p>
+              <p>Bidet: Yes</p>
+              <p>Bed Size: King</p>
+              <p>Number of Beds: 1</p>
+            </div>
+            <div class="cost-container">
+              <p>$800</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-card" id=5>
+          <div class="date-room">
+            <div class="date">
+              <p>Date: 10/6/22</p>
+            </div>
+            <div class="room">
+              <p>Room #: 22</p>
+            </div>
+          </div>
+          <div class="booking-details-container">
+            <div class="booking-details">
+              <p>Room Type: Single Room</p>
+              <p>Bidet: Yes</p>
+              <p>Bed Size: King</p>
+              <p>Number of Beds: 1</p>
+            </div>
+            <div class="cost-container">
+              <p>$800</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </section>
+
+  <section class="book-a-room-page hidden">
+    <nav>
+      <div class="customer-greeting-container">
+        <div class="customer-welcome">
+          <h3>Welcome</h3>
+        </div>
+        <div class="customer-name">
+          <h2 class="user-name">Ross Landino</h2>
+        </div>
+      </div>
+      <div class="button-container">
+        <button class="book-a-room">My Bookings</button>
+        <button class="logout">Logout</button>
+      </div>
+    </nav>
+    <main class="customer-bookings">
+      <div class="book-a-room-title-container">
+        <h2>Book a Room</h2>
+      </div>
+      <div class="select-date-and-type-container">
+
+        <div class="select-date-container">
+          <label class="select-date-label">Select a Date</label>
+          <input class="select-date-input" type="date"></input>
+        </div>
+
+        <div class="select-room-type-container">
+          <label class="dropdown-filter-label">Filter by Type</label>
+          <input class="dropdown-filter-input"></input>
+          <!-- <p class="info">info</p> -->
+          <div class="dropdown-room-type" id="dropdown">
+            <p tabindex="0" class="type-hover" data-info="residential suite">residential suite</p>
+            <p tabindex="0" class="type-hover" data-info="junior suite">junior suite</p>
+            <p tabindex="0" class="type-hover" data-info="single room">single room</p>
+            <p tabindex="0" class="type-hover" data-info="suite">suite</p>
+          </div>
+        </div>
+
+
+      </div>
+      <section class="all-bookings-display-container">
+        <div class="booking-card" id=1>
+          <div class="room-cost">
+            <div class="room">
+              <p>Room Info</p>
+            </div>
+            <div class="cost">
+              <p>Cost per Night</p>
+            </div>
+          </div>
+          <div class="booking-details-container">
+            <div class="booking-details">
+              <p>Room Number: 1</p>
+              <p>Room Type: Single Room</p>
+              <p>Bidet: Yes</p>
+              <p>Bed Size: King</p>
+              <p>Number of Beds: 1</p>
+            </div>
+            <div class="cost-per-night-container">
+              <div class="cost-container">
+                <p>$800.35</p>
+              </div>
+              <div class="book-room-container">
+                <button class="book-room">Book Room</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-card" id=2>
+          <div class="room-cost">
+            <div class="room">
+              <p>Room Info</p>
+            </div>
+            <div class="cost">
+              <p>Cost per Night</p>
+            </div>
+          </div>
+          <div class="booking-details-container">
+            <div class="booking-details">
+              <p>Room Number: 1</p>
+              <p>Room Type: Single Room</p>
+              <p>Bidet: Yes</p>
+              <p>Bed Size: King</p>
+              <p>Number of Beds: 1</p>
+            </div>
+            <div class="cost-per-night-container">
+              <div class="cost-container">
+                <p>$800.35</p>
+              </div>
+              <div class="book-room-container">
+                <button class="book-room">Book Room</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-card" id=3>
+          <div class="room-cost">
+            <div class="room">
+              <p>Room Info</p>
+            </div>
+            <div class="cost">
+              <p>Cost per Night</p>
+            </div>
+          </div>
+          <div class="booking-details-container">
+            <div class="booking-details">
+              <p>Room Number: 1</p>
+              <p>Room Type: Single Room</p>
+              <p>Bidet: Yes</p>
+              <p>Bed Size: King</p>
+              <p>Number of Beds: 1</p>
+            </div>
+            <div class="cost-per-night-container">
+              <div class="cost-container">
+                <p>$800.35</p>
+              </div>
+              <div class="book-room-container">
+                <button class="book-room">Book Room</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-card" id=4>
+          <div class="room-cost">
+            <div class="room">
+              <p>Room Info</p>
+            </div>
+            <div class="cost">
+              <p>Cost per Night</p>
+            </div>
+          </div>
+          <div class="booking-details-container">
+            <div class="booking-details">
+              <p>Room Number: 1</p>
+              <p>Room Type: Single Room</p>
+              <p>Bidet: Yes</p>
+              <p>Bed Size: King</p>
+              <p>Number of Beds: 1</p>
+            </div>
+            <div class="cost-per-night-container">
+              <div class="cost-container">
+                <p>$800.35</p>
+              </div>
+              <div class="book-room-container">
+                <button class="book-room">Book Room</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-card" id=5>
+          <div class="room-cost">
+            <div class="room">
+              <p>Room Info</p>
+            </div>
+            <div class="cost">
+              <p>Cost per Night</p>
+            </div>
+          </div>
+          <div class="booking-details-container">
+            <div class="booking-details">
+              <p>Room Number: 1</p>
+              <p>Room Type: Single Room</p>
+              <p>Bidet: Yes</p>
+              <p>Bed Size: King</p>
+              <p>Number of Beds: 1</p>
+            </div>
+            <div class="cost-per-night-container">
+              <div class="cost-container">
+                <p>$800.35</p>
+              </div>
+              <div class="book-room-container">
+                <button class="book-room">Book Room</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
 
