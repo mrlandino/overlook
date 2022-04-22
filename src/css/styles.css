@@ -5,7 +5,7 @@
 body {
   display: flex;
   width: 100vw;
-
+  overflow: hidden;
   height: 100vh;
 
 }
@@ -65,7 +65,9 @@ h1 {
 }
 
 .username-label,
-.password-label {
+.password-label,
+.select-date-label,
+.dropdown-filter-label {
   color: white;
   font-size: 25px;
 }
@@ -190,7 +192,7 @@ nav {
   flex-direction: column;
   /* justify-content: center; */
   /* align-items: center; */
-  height: 70%;
+  height: 80%;
   width: 100%;
   align-items: center;
 }
@@ -224,19 +226,19 @@ h2 {
 }
 
 .total-bookings-container,
-.select-date-container {
+.select-date-container,
+.select-room-type-container {
   height: 100%;
   width: 25%;
   margin-right: 50px;
-  border: solid green 2px;
+  /* border: solid green 2px; */
   display: flex;
   justify-content: center;
   align-items: center;
 
 }
 
-.total-spent-container,
-.dropdown-container {
+.total-spent-container {
   height: 100%;
   width: 25%;
   margin-left: 50px;
@@ -247,34 +249,6 @@ h2 {
 
 }
 
-.dropdown-filter-button {
-  /* align-items: center; */
-  /* display: none; */
-  position: absolute;
-  /* justify-content: space-between; */
-  margin: 20px 5px;
-  width: 100%;
-}
-
-.dropdown-container {
-  position: relative;
-  /* align-items: center; */
-  display: inline-block;
-  /* flex-direction: column;
-  justify-content: space-between; */
-}
-
-.dropdown-room-type {
-  display: none;
-  position: absolute;
-
-}
-
-.dropdown-container:hover,
-.dropdown-room-type {
-  display: block;
-  z-index: 4;
-}
 
 
 .total-bookings,
@@ -284,9 +258,10 @@ h2 {
   font-size: 24px;
 }
 
-.customer-bookings-display-container {
+.customer-bookings-display-container,
+.all-bookings-display-container {
   /* border: solid yellow 3px; */
-  border-bottom: solid black 2px;
+  /* border-bottom: solid black 2px; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -299,12 +274,22 @@ h2 {
 .booking-details-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 90%;
+  /* border: solid pink 3px; */
 }
 
 .cost-container {
+  display: flex;
+
+  justify-content: center;
+  /* border: solid blue 3px; */
   font-size: 40px;
+  padding-top: 10px;
+  padding-right: 20px;
   margin-top: 20px;
-  margin-right: 20px;
+  margin-left: 20px;
+  /* margin-right: 20pxs; */
 }
 
 .booking-card {
@@ -324,17 +309,19 @@ h2 {
   padding: 25px;
 }
 
-.date-room {
+.date-room,
+.room-cost {
   display: flex;
   justify-content:space-between;
+  border-bottom: solid black 2px;
   margin-right: 20px;
+  /* border: solid red 3px; */
+  height: 20%;
 
 }
 
-.date,
+.cost,
 .room {
-  /* border: solid blue 3px; */
-  border-bottom: solid black 2px;
   margin-bottom: 10px;
   display: flex;
   font-size: 20px;
@@ -346,6 +333,105 @@ h2 {
   background-repeat: no-repeat;
   display: flex;
 }
+
+.cost-per-night-container {
+  display: flex;
+  flex-direction: column;
+}
+.cost-container {
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.book-room-container {
+  margin-bottom: 25px;
+}
+
+.book-room {
+  height: 50px;
+  width: 150px;
+  opacity: 80%;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.select-date-container {
+  /* border: solid red 3px; */
+  width: 35%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.select-date-label,
+.select-room-label,
+.dropdown-filter-label {
+  color: black;
+}
+
+.select-date-input {
+  text-align: center;
+  height: 35px;
+  width: 250px;
+  background-color: white;
+  opacity: 60%;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.info:hover
+.dropdown-room-type {
+  display: inline-block;
+  position: relative;
+}
+
+.select-room-type-container {
+  position: relative;
+  display: flex;
+
+  /* border: solid blue 3px; */
+  width: 35%;
+  height: 100%;
+  justify-content: space-around;
+}
+
+.dropdown-filter-input {
+  align-items: center;
+  text-align: center;
+  height: 35px;
+  width: 250px;
+  background-color: white;
+  opacity: 60%;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin: 20px;
+}
+
+.dropdown-room-type {
+  display: none;
+  position: relative;
+  z-index: 4;
+  margin: 0;
+  padding: 5px 20px;
+  text-align: center;
+}
+
+.dropdown-filter-input:hover
+.dropdown-room-type {
+  display: inline-block;
+  position: relative;
+}
+
 
 .hidden {
   display: none;
