@@ -47,9 +47,15 @@ class Customer {
         });
       };
     });
+
+    //FIND A WAY TO SORT BY DATE BEFORE SENDING TO display
+    // ALSO  MAY TRY TO DISPLAY AN UPCOMING BOOKINGS VS. PAST
+    // this.myBookings.sort((a, b) => {
+    //   return a.date - b.date;
+    // })
   }
 
-  
+
   //function that creates totalSpent by customer
   //function that creates numBookings by customer
 }
