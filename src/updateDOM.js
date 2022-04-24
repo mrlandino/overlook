@@ -8,6 +8,7 @@ let totalSpent = document.querySelector(".total-spent");
 let totalBookings = document.querySelector(".total-bookings");
 let customerBookingsContainer = document.querySelector(".customer-bookings-display-container");
 
+
 const domUpdateMethods = {
 
   loginErrorMessage() {
@@ -34,6 +35,7 @@ const domUpdateMethods = {
 
   displayUserTotals(currentCustomer) {
     currentCustomer.updateMyBookings();
+
     console.log("AFTER UPDATE", currentCustomer);
     let moneySpent = currentCustomer.totalSpent;
     let allBookings = currentCustomer.numBookings;
@@ -45,13 +47,18 @@ const domUpdateMethods = {
 
   dislayCustomerBookingCards(currentCustomer) {
     let allBookings = '';
-    // console.log("currentCustomer.myBookings);
-    // console.log(currentCustomer.allRooms);
+    let status;
     currentCustomer.myBookings.forEach(booking => {
+        if(booking.bookingStatus === "upcoming") {
+        status = `class="status upcoming">Status: upcoming`;
+        } else if(booking.bookingStatus === "completed") {
+        status = `class="status completed">Status: completed`;
+        }
+
       allBookings += `<div class="booking-card" id=1>
                         <div class="date-room">
                           <div class="date">
-                            <p>Date: ${booking.date}</p>
+                            <p>Date: ${booking.displayDate}</p>
                           </div>
                           <div class="room">
                             <p>Room #: ${booking.roomNumber}</p>
@@ -64,15 +71,33 @@ const domUpdateMethods = {
                             <p>Bed Size: ${booking.bedSize}</p>
                             <p>Number of Beds: ${booking.numBeds}</p>
                           </div>
-                          <div class="cost-container">
-                            <p>$${booking.roomCost}</p>
+                          <div class="cost-and-status">
+                            <div class="status-container">
+                              <p ${status}</p>
+                            </div>
+                            <div class="cost-container">
+                              <p>$${booking.roomCost}</p>
+                            </div>
                           </div>
                         </div>
                       </div>`;
-    });
-
+      })
     customerBookingsContainer.innerHTML = allBookings;
   },
+
+  // updateBookingStatus(currentCustomer) {
+  //   let upcoming = document.querySelector(".upcoming");
+  //   let completed = document.querySelector(".completed");
+  //   currentCustomer.myBookings.forEach(booking => {
+  //     if(booking.bookingStatus === "upcoming") {
+  //       domUpdateMethods.showElement([upcoming]);
+  //       domUpdateMethods.hideElement([completed]);
+  //     } else if(booking.bookingStatus === "completed") {
+  //       domUpdateMethods.showElement([completed]);
+  //       domUpdateMethods.hideElement([upcoming]);
+  //     }
+  //   })
+  // },
 
 }
 
