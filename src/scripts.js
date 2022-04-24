@@ -48,8 +48,6 @@ const loadCustomerData = (id) => {
       domUpdateMethods.displayUserName(currentCustomer);
       domUpdateMethods.displayUserTotals(currentCustomer);
       domUpdateMethods.dislayCustomerBookingCards(currentCustomer);
-      //display user dashboard from updateDOM.js
-      //other functions that display whats needed on the dom or to update data elsewhere
   });
 }
 
