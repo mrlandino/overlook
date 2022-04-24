@@ -1,5 +1,12 @@
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.css';
+import { getAllData, getSpecificData } from './apiCalls';
+import AllCustomers from './AllCustomers';
+import AllRooms from './AllRooms';
+import BookingsRepo from './BookingsRepo';
+import Booking from './Booking';
+import Customer from './Customer';
+import domUpdateMethods from './updateDOM';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 // import './images/turing-logo.png'
@@ -7,51 +14,67 @@ import './css/styles.css';
 let allCustomers, allBookings, allRooms, currentCustomer
 
 //QUERY SELECTORS:
-signInButton.document.querySelector(.);
-username.document.querySelector();
-password.document.querySelector();
+let signInButton = document.querySelector(".sign-in-button");
+let username = document.querySelector(".username-input");
+let password = document.querySelector(".password-input");
+let logOutButton = document.querySelector(".logout");
 
 //EVENT LISTENERS:
 window.onload = (event) => loadWindow();
 
 signInButton.addEventListener('click', function() {
-  // loginValidation(username.value, password.value);
-  if(loginValidation(username.value, password.value)){
-    loadCustomerData(getCustomerId());
+  event.preventDefault();
+  if(username.value && password.value){
+    loginValidation(username.value, password.value)
+  } else {
+    domUpdateMethods.loginErrorMessage();
   }
+  username.value = '';
+  password.value = '';
+});
+
+logOutButton.addEventListener('click', function() {
+  console.log(allCustomers, allRooms, allBookings, currentCustomer)
 })
-//Render all data:
+//RENDER ALL DATA:
 const loadCustomerData = (id) => {
   getAllData(id)
   .then((data) => {
       allCustomers = new AllCustomers(data[0]);
       allRooms = new AllRooms(data[1]);
-      allBookings = new BookingsRepo(data[2])
+      allBookings = new BookingsRepo(data[2]);
       currentCustomer = new Customer(data[3], allBookings);
+      domUpdateMethods.loadCustomerDashboard();
       //display user dashboard from updateDOM.js
       //other functions that display whats needed on the dom or to update data elsewhere
   });
 }
 
-const loadWindow = () {
-  allCustomers = getSpecificData('customers');
+const loadWindow = () => {
+  getSpecificData('customers')
+  .then((data) => {
+    allCustomers = data.customers
+  });
 }
 
 const getCustomerId = () => {
-  //get customer id from username. need to find out how to split string with numbers to get just the number.
-    return username.value.remove('customer');
+  let userID = username.value.replace('customer', '');
+  return Number(userID);
 }
 
 const loginValidation = (username, password) => {
   let masterPassword = "overlook2021";
-  let validation = allCustomers.forEach(customer => {
+  let validation = allCustomers.reduce((acc, customer) => {
     if(`customer${customer.id}` === username && password === masterPassword) {
-      //load customer dashboard
-      return true;
-    } else {
-      //customer login fail message in updateDOM.js object
-      return false;
-    }
-  })
-  return validation;
+      acc.push(customer);
+    };
+    return acc;
+  }, []);
+
+  if(validation.length === 1) {
+    loadCustomerData(getCustomerId());
+    console.log("load new page");
+  } else if (validation.length === 0){
+    domUpdateMethods.loginErrorMessage();
+  }
 }
