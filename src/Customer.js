@@ -9,6 +9,7 @@ class Customer {
     this.numBookings = 0;
     this.username = `customer${this.id}`;
     this.password = "overlook2021";
+    this.currentDate = new Date().getTime();
   }
 
   updateMyBookings() {
@@ -44,20 +45,39 @@ class Customer {
           booking.numBeds = room.numBeds;
           booking.roomType = room.roomType;
           }
+          // if (booking.timeStamp >= this.currentDate) {
+          //   booking.bookingStatus = "upcoming";
+          // } else {
+          //   booking.bookingStatus = "completed";
+          // }
         });
       };
     });
 
-    //FIND A WAY TO SORT BY DATE BEFORE SENDING TO display
+    this.updateDateToSort();
     // ALSO  MAY TRY TO DISPLAY AN UPCOMING BOOKINGS VS. PAST
-    // this.myBookings.sort((a, b) => {
-    //   return a.date - b.date;
-    // })
+    this.myBookings.sort((a, b) => {
+      return b.timeStamp - a.timeStamp;
+    })
+
+    this.myBookings.map(booking => {
+      this.allRooms.allRooms.rooms.forEach(room => {
+        if (booking.timeStamp >= this.currentDate) {
+          booking.bookingStatus = "upcoming";
+        } else {
+          booking.bookingStatus = "completed";
+        }
+      })
+    })
   }
 
-
-  //function that creates totalSpent by customer
-  //function that creates numBookings by customer
+  updateDateToSort() {
+    this.myBookings.forEach(booking => {
+      booking.timeStamp = new Date(booking.date).getTime();
+      booking.displayDate = new Date(booking.timeStamp).toDateString();
+    })
+    console.log("UPDATED TIME STAMP", this.myBookings)
+  }
 }
 
 export default Customer;
