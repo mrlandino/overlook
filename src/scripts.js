@@ -43,8 +43,11 @@ const loadCustomerData = (id) => {
       allCustomers = new AllCustomers(data[0]);
       allRooms = new AllRooms(data[1]);
       allBookings = new BookingsRepo(data[2]);
-      currentCustomer = new Customer(data[3], allBookings);
+      currentCustomer = new Customer(data[3], allBookings, allRooms);
       domUpdateMethods.loadCustomerDashboard();
+      domUpdateMethods.displayUserName(currentCustomer);
+      domUpdateMethods.displayUserTotals(currentCustomer);
+      domUpdateMethods.dislayCustomerBookingCards(currentCustomer);
       //display user dashboard from updateDOM.js
       //other functions that display whats needed on the dom or to update data elsewhere
   });
