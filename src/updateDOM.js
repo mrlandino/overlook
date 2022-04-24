@@ -21,6 +21,11 @@ const domUpdateMethods = {
     domUpdateMethods.hideElement([landingPage]);
   },
 
+  loadBookingsPage() {
+    domUpdateMethods.showElement([bookARoomPage]);
+    domUpdateMethods.hideElement([customerPage]);
+  },
+
   showElement(elements) {
   elements.forEach(element => element.classList.remove("hidden"));
   },
@@ -85,7 +90,7 @@ const domUpdateMethods = {
       })
     customerBookingsContainer.innerHTML = allBookings;
   },
-  
+
 }
 
 export default domUpdateMethods;
