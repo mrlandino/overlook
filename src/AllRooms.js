@@ -1,6 +1,6 @@
 class AllRooms {
   constructor(allRooms) {
-    this.allRooms = allrooms;
+    this.allRooms = allRooms;
   }
 }
 
