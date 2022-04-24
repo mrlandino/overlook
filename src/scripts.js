@@ -18,6 +18,7 @@ let signInButton = document.querySelector(".sign-in-button");
 let username = document.querySelector(".username-input");
 let password = document.querySelector(".password-input");
 let logOutButton = document.querySelector(".logout");
+let bookARoomButton = document.querySelector(".book-a-room");
 
 //EVENT LISTENERS:
 window.onload = (event) => loadWindow();
@@ -34,8 +35,13 @@ signInButton.addEventListener('click', function() {
 });
 
 logOutButton.addEventListener('click', function() {
-  console.log(allCustomers, allRooms, allBookings, currentCustomer)
+  location.reload();
 })
+
+bookARoomButton.addEventListener('click', function() {
+  console.log("move to booking page");
+})
+
 //RENDER ALL DATA:
 const loadCustomerData = (id) => {
   getAllData(id)
