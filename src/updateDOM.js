@@ -3,6 +3,10 @@
 let landingPage = document.querySelector(".landing-page");
 let customerPage = document.querySelector(".customer-page");
 let bookARoomPage = document.querySelector(".book-a-room-page");
+let userName = document.querySelector(".user-name");
+let totalSpent = document.querySelector(".total-spent");
+let totalBookings = document.querySelector(".total-bookings");
+let customerBookingsContainer = document.querySelector(".customer-bookings-display-container");
 
 const domUpdateMethods = {
 
@@ -23,6 +27,53 @@ const domUpdateMethods = {
   hideElement(elements) {
     elements.forEach(element => element.classList.add("hidden"));
   },
+
+  displayUserName(currentCustomer) {
+    userName.innerText = currentCustomer.name;
+  },
+
+  displayUserTotals(currentCustomer) {
+    currentCustomer.updateMyBookings();
+    console.log("AFTER UPDATE", currentCustomer);
+    let moneySpent = currentCustomer.totalSpent;
+    let allBookings = currentCustomer.numBookings;
+
+    totalSpent.innerText = `Total Spent: $${moneySpent}`;
+    totalBookings.innerText = `Total Bookings: ${allBookings}`;
+
+  },
+
+  dislayCustomerBookingCards(currentCustomer) {
+    let allBookings = '';
+    // console.log("currentCustomer.myBookings);
+    // console.log(currentCustomer.allRooms);
+    currentCustomer.myBookings.forEach(booking => {
+      allBookings += `<div class="booking-card" id=1>
+                        <div class="date-room">
+                          <div class="date">
+                            <p>Date: ${booking.date}</p>
+                          </div>
+                          <div class="room">
+                            <p>Room #: ${booking.roomNumber}</p>
+                          </div>
+                        </div>
+                        <div class="booking-details-container">
+                          <div class="booking-details">
+                            <p>Room Type: ${booking.roomType}</p>
+                            <p>Bidet: ${booking.bidet}</p>
+                            <p>Bed Size: ${booking.bedSize}</p>
+                            <p>Number of Beds: ${booking.numBeds}</p>
+                          </div>
+                          <div class="cost-container">
+                            <p>$${booking.roomCost}</p>
+                          </div>
+                        </div>
+                      </div>`;
+    });
+
+    customerBookingsContainer.innerHTML = allBookings;
+  },
+
 }
 
 export default domUpdateMethods;
