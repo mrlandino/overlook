@@ -321,10 +321,28 @@ h2 {
 }
 
 .cost,
+.date,
 .room {
   margin-bottom: 10px;
   display: flex;
   font-size: 20px;
+}
+
+.cost-and-status {
+  display: flex;
+  flex-direction: column;
+}
+.status {
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+.upcoming {
+  color: green;
+}
+
+.completed {
+  color: red;
 }
 
 .book-a-room-page {
