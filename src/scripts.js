@@ -40,6 +40,8 @@ logOutButton.addEventListener('click', function() {
 
 bookARoomButton.addEventListener('click', function() {
   console.log("move to booking page");
+  event.preventDefault();
+  domUpdateMethods.loadBookingsPage();
 })
 
 //RENDER ALL DATA:
