@@ -24,8 +24,11 @@ class Customer {
 
     let moneySpent = this.myBookings.reduce((total, booking) => {
       this.allRooms.allRooms.rooms.forEach(room => {
+        if(room.number === booking.roomNumber) {
           total += room.costPerNight;
+        }
       })
+      console.log(total)
       return total;
     }, 0)
 
