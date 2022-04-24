@@ -48,6 +48,7 @@ const domUpdateMethods = {
   dislayCustomerBookingCards(currentCustomer) {
     let allBookings = '';
     let status;
+
     currentCustomer.myBookings.forEach(booking => {
         if(booking.bookingStatus === "upcoming") {
         status = `class="status upcoming">Status: upcoming`;
@@ -84,21 +85,7 @@ const domUpdateMethods = {
       })
     customerBookingsContainer.innerHTML = allBookings;
   },
-
-  // updateBookingStatus(currentCustomer) {
-  //   let upcoming = document.querySelector(".upcoming");
-  //   let completed = document.querySelector(".completed");
-  //   currentCustomer.myBookings.forEach(booking => {
-  //     if(booking.bookingStatus === "upcoming") {
-  //       domUpdateMethods.showElement([upcoming]);
-  //       domUpdateMethods.hideElement([completed]);
-  //     } else if(booking.bookingStatus === "completed") {
-  //       domUpdateMethods.showElement([completed]);
-  //       domUpdateMethods.hideElement([upcoming]);
-  //     }
-  //   })
-  // },
-
+  
 }
 
 export default domUpdateMethods;
