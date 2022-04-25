@@ -85,7 +85,8 @@ h1 {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.sign-in-button {
+.sign-in-button,
+.search-button {
   height: 30px;
   width: 85px;
   opacity: 80%;
@@ -98,7 +99,8 @@ h1 {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.sign-in-button:hover {
+.sign-in-button:hover,
+.search-button:hover {
   background-color: #F1B643;
   transform: scale(1.1);
   transition: .2s;
@@ -159,12 +161,15 @@ nav {
   margin-left: 50px;
 }
 
-.user-name {
+.user-name,
+.user-name-2 {
   font-size: 70px;
 }
 
 .book-a-room,
-.logout {
+.logout,
+.logout-2,
+.my-bookings {
   height: 50px;
   width: 200px;
   opacity: 80%;
@@ -178,7 +183,9 @@ nav {
 }
 
 .book-a-room:hover,
-.logout:hover {
+.logout:hover,
+.logout-2:hover,
+.my-bookings:hover {
   background-color: #F1B643;
   transform: scale(1.05);
   transition: .2s;
@@ -217,7 +224,7 @@ h2 {
   /* border: solid blue 3px; */
   border-top: solid black 3px;
   border-bottom: solid black 3px;
-  width: 90%;
+  width: 100%;
   height: 10%;
   display: flex;
   justify-content: center;
@@ -229,7 +236,7 @@ h2 {
 .select-date-container,
 .select-room-type-container {
   height: 100%;
-  width: 25%;
+  width: 50%;
   margin-right: 50px;
   /* border: solid green 2px; */
   display: flex;
@@ -389,6 +396,7 @@ h2 {
 .select-room-label,
 .dropdown-filter-label {
   color: black;
+
 }
 
 .select-date-input {
@@ -415,8 +423,8 @@ h2 {
   display: flex;
 
   /* border: solid blue 3px; */
-  width: 35%;
-  height: 100%;
+  /* width: 35%; */
+  /* height: 100%; */
   justify-content: space-around;
 }
 
