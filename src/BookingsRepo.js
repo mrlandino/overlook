@@ -1,12 +1,13 @@
 import Booking from './Booking';
+import Room from './Room';
 
 class BookingsRepo {
   constructor(bookings, allRooms) {
     this.bookings = bookings.bookings;
     this.allRooms = allRooms;
-    this.roomsAvailable = [];
     this.allBookingsMaster = this.updateBookingsMaster();
-    //create allRoomInfo
+    this.allRoomsMaster = this.updateAllRooms();
+    this.roomsAvailable = this.updateAllRooms();
   }
 
   updateBookingsMaster() {
@@ -21,34 +22,36 @@ class BookingsRepo {
     return updatedList;
   }
 
+  updateAllRooms() {
+    let roomList = [];
+    let updatedList = this.allRooms.allRooms.rooms.reduce((acc, room) => {
+      this.allBookingsMaster.forEach(booking => {
+        if(room.number === booking.roomNumber && !roomList.includes(room.number)) {
+          roomList.push(room.number)
+          acc.push(new Room(booking))
+        }
+      });
+      return acc;
+    }, [])
 
-  // updateRoomsAvailable(date, type) {
-  //   console.log("INPUT VALUES", date, type)
-  //   if(date && roomTypeFilter) {
-  //     console.log("SHOW ME MY ROOMS WITH BOTH INPUTS FILLED IN")
-  //     //load bookings that filter by date AND room type
-  //   } else if (date && !type) {
-  //       this.allRooms.forEach(room => {
-  //         this.bookings.forEach(booking => {
-  //           if(room.number === booking.roomNumber && booking.date !== date) {
-  //             this.roomsAvailable.push({
-  //               roomNumber: "PLUG room Number",
-  //               roomType: "PLUG room Type",
-  //               bidet: "PLUG bidet yes or no",
-  //               bedSize: "PLUG bed size",
-  //               numOfBeds: "PLUG number of beds",
-  //               costPerNight: "PLUG cost per night"});
-  //           } else if(room.number ===)
-  //
-  //           //if the room we currently looking at:
-  //           //doesnt exist in the bookings
-  //           //as long as the room and date dont match bookings room and date
-  //         })
-  //       })
-  //     //load bookings by just the date
-  //   } else if (!date && type) {
-  //     console.log("SHOW ME MY ROOMS WITH TYPE INPUT FILLED IN")
-  //   }
+    return updatedList;
+  }
+
+  availableRoomsByDate(date) {
+    this.roomsAvailable = this.updateAllRooms();
+    let thisDate = date.replace('-', '/');
+    let thisDate1 = thisDate.replace('-', '/');
+    console.log("BEFORE", this.allRoomsMaster)
+    this.allRoomsMaster.forEach(room => {
+      this.allBookingsMaster.forEach(booking =>{
+        if(booking.roomNumber === room.roomNumber && booking.date === thisDate1){
+          console.log("YOU MADE IT IN");
+          this.roomsAvailable.splice((room.roomNumber -1), 1, );
+        }
+      })
+    });
+    console.log(this.roomsAvailable);
+  }
 }
   //combine all room information and booking information
   //.filter Date
