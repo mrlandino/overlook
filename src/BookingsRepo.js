@@ -1,5 +1,6 @@
 import Booking from './Booking';
 import Room from './Room';
+import domUpdateMethods from './updateDOM';
 
 class BookingsRepo {
   constructor(bookings, allRooms) {
@@ -38,23 +39,59 @@ class BookingsRepo {
   }
 
   availableRoomsByDate(date) {
-    this.roomsAvailable = this.updateAllRooms();
-    let thisDate = date.replace('-', '/');
-    let thisDate1 = thisDate.replace('-', '/');
-    console.log("BEFORE", this.allRoomsMaster)
-    this.allRoomsMaster.forEach(room => {
-      this.allBookingsMaster.forEach(booking =>{
-        if(booking.roomNumber === room.roomNumber && booking.date === thisDate1){
-          console.log("YOU MADE IT IN");
-          this.roomsAvailable.splice((room.roomNumber -1), 1, );
-        }
+    if(date === '') {
+      domUpdateMethods.searchErrorMessage();
+    } else if (date !== ''){
+      this.roomsAvailable = this.updateAllRooms();
+      let thisDate = date.replace('-', '/');
+      let thisDate1 = thisDate.replace('-', '/');
+      console.log("BEFORE", this.allRoomsMaster)
+      this.allRoomsMaster.forEach(room => {
+        let roomIndex = this.allRoomsMaster.findIndex(room1 => {
+          return room1.roomNumber === room.roomNumber;
+        });
+        console.log("ROOM INDEX", roomIndex)
+        this.allBookingsMaster.forEach(booking => {
+
+
+          if(booking.roomNumber === room.roomNumber && booking.date === thisDate1){
+            this.roomsAvailable.splice(roomIndex, 1);
+            domUpdateMethods.loadCurrentOpenings(this.roomsAvailable)
+          } else (
+            domUpdateMethods.loadCurrentOpenings(this.roomsAvailable)
+          )
+        })
+      });
+      console.log("AFTER DATE FILTER", this.roomsAvailable);
+    }
+  }
+
+  availableRoomsByType(type, date) {
+    this.availableRoomsByDate(date);
+    if(date !== '' && type !== ''){
+      this.roomsAvailable = this.roomsAvailable.filter(room => {
+        return room.roomType === type;
       })
-    });
-    console.log(this.roomsAvailable);
+      // this.roomsAvailable.forEach(room => {
+      //   let roomIndex = this.roomsAvailable.findIndex(room1 => {
+      //     return room1.roomNumber === room.roomNumber;
+      //   });
+      //
+      //   console.log("ROOM INDEX", roomIndex)
+      //   if(room.roomType !== type){
+      //     console.log(room.roomType, type);
+      //     this.roomsAvailable.splice(roomIndex, 1);
+      //     console.log("AFTER SPLICE", this.roomsAvailable);
+      //     domUpdateMethods.loadCurrentOpenings(this.roomsAvailable);
+      //   }
+      // });
+
+      console.log("AFTER TYPE FILTER", this.roomsAvailable);
+      domUpdateMethods.loadCurrentOpenings(this.roomsAvailable);
+    }
   }
 }
-  //combine all room information and booking information
-  //.filter Date
+
   //.filter by Type
 
 
