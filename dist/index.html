@@ -199,13 +199,16 @@
         </div>
         <div class="select-room-type-container">
           <label class="dropdown-filter-label">Search by Type</label>
-          <input class="dropdown-filter-input"></input>
+          <select class="dropdown-filter-input">
+            <option tabindex="0" class="type-hover" value="all">all room types</option>
+            <option tabindex="0" class="type-hover" value="residential suite">residential suite</option>
+            <option tabindex="0" class="type-hover" value="junior suite">junior suite</option>
+            <option tabindex="0" class="type-hover" value="single room">single room</option>
+            <option tabindex="0" class="type-hover" value="suite">suite</option>
+          </select>
           <!-- <p class="info">info</p> -->
           <div class="dropdown-room-type" id="dropdown">
-            <p tabindex="0" class="type-hover" data-info="residential suite">residential suite</p>
-            <p tabindex="0" class="type-hover" data-info="junior suite">junior suite</p>
-            <p tabindex="0" class="type-hover" data-info="single room">single room</p>
-            <p tabindex="0" class="type-hover" data-info="suite">suite</p>
+
           </div>
           <button class="search-button">search</button>
         </div>
