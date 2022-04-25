@@ -18,7 +18,14 @@ let signInButton = document.querySelector(".sign-in-button");
 let username = document.querySelector(".username-input");
 let password = document.querySelector(".password-input");
 let logOutButton = document.querySelector(".logout");
+let logOutButton2 = document.querySelector(".logout-2");
 let bookARoomButton = document.querySelector(".book-a-room");
+let searchButton = document.querySelector(".search-button");
+let searchDateInput = document.querySelector(".select-date-input");
+let searchTypeInput = document.querySelector(".dropdown-filter-input");
+let myBookingsButton = document.querySelector(".my-bookings");
+let selectDateInput = document.querySelector(".select-date-input");
+let searchByTypeInput = document.querySelector(".dropdown-filter-input");
 
 //EVENT LISTENERS:
 window.onload = (event) => loadWindow();
@@ -36,12 +43,40 @@ signInButton.addEventListener('click', function() {
 
 logOutButton.addEventListener('click', function() {
   location.reload();
-})
+});
+
+logOutButton2.addEventListener('click', function() {
+  location.reload();
+});
+
+myBookingsButton.addEventListener('click', function() {
+  loadCustomerData(currentCustomer.id);
+});
 
 bookARoomButton.addEventListener('click', function() {
-  console.log("move to booking page");
   event.preventDefault();
-  domUpdateMethods.loadBookingsPage();
+  domUpdateMethods.loadBookingsPage(currentCustomer);
+
+
+})
+
+searchButton.addEventListener('click', function() {
+  event.preventDefault();
+  console.log("YOU HIT THE SEARCH BUTTON")
+  console.log(searchByTypeInput.value, selectDateInput.value)
+  if(searchByTypeInput.value !== 'all'){
+    console.log("SEARCH BY TYPE")
+    allBookings.availableRoomsByType(searchByTypeInput.value, selectDateInput.value)
+    // domUpdateMethods.loadCurrentOpenings(allBookings.roomsAvailable)
+  } else if (searchByTypeInput.value === 'all' && selectDateInput.value !== '') {
+    console.log("SEARCH BY DATE")
+    allBookings.availableRoomsByDate(selectDateInput.value)
+    // domUpdateMethods.loadCurrentOpenings(allBookings.roomsAvailable)
+  } else if (searchByTypeInput.value === 'all' && selectDateInput.value === '') {
+    domUpdateMethods.searchErrorMessage();
+  }
+
+
 })
 
 //RENDER ALL DATA:
@@ -50,8 +85,8 @@ const loadCustomerData = (id) => {
   .then((data) => {
       allCustomers = new AllCustomers(data[0]);
       allRooms = new AllRooms(data[1]);
-      allBookings = new BookingsRepo(data[2]);
-      currentCustomer = new Customer(data[3], allBookings, allRooms);
+      allBookings = new BookingsRepo(data[2], allRooms);
+      currentCustomer = new Customer(data[3], allBookings);
       domUpdateMethods.loadCustomerDashboard();
       domUpdateMethods.displayUserName(currentCustomer);
       domUpdateMethods.displayUserTotals(currentCustomer);

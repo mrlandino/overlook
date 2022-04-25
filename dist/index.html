@@ -50,17 +50,17 @@
       </div>
       <div class="customer-numbers-container">
           <div class="total-bookings-container">
-            <p class="total-bookings">Total Bookings: 0</p>
+            <p class="total-bookings"></p>
             <!-- <p class="num-bookings">0</p> -->
           </div>
           <div class="total-spent-container">
-            <p class="total-spent">Total Spent: $1500</p>
+            <p class="total-spent"></p>
             <!-- <p class="num-spent">$0<p> -->
           </div>
       </div>
       <section class="customer-bookings-display-container">
         <!-- USE BELOW EXAMPLE -->
-        <div class="booking-card" id=1>
+        <!-- <div class="booking-card" id=1>
           <div class="date-room">
             <div class="date">
               <p>Date: 10/6/22</p>
@@ -168,7 +168,7 @@
               <p>$800</p>
             </div>
           </div>
-        </div>
+        </div> -->
       </section>
     </main>
   </section>
@@ -180,12 +180,12 @@
           <h3>Welcome</h3>
         </div>
         <div class="customer-name">
-          <h2 class="user-name">Ross Landino</h2>
+          <h2 class="user-name-2"></h2>
         </div>
       </div>
       <div class="button-container">
-        <button class="book-a-room">My Bookings</button>
-        <button class="logout">Logout</button>
+        <button class="my-bookings">My Bookings</button>
+        <button class="logout-2">Logout</button>
       </div>
     </nav>
     <main class="customer-bookings">
@@ -193,28 +193,30 @@
         <h2>Book a Room</h2>
       </div>
       <div class="select-date-and-type-container">
-
         <div class="select-date-container">
           <label class="select-date-label">Select a Date</label>
           <input class="select-date-input" type="date"></input>
         </div>
-
         <div class="select-room-type-container">
-          <label class="dropdown-filter-label">Filter by Type</label>
-          <input class="dropdown-filter-input"></input>
+          <label class="dropdown-filter-label">Search by Type</label>
+          <select class="dropdown-filter-input">
+            <option tabindex="0" class="type-hover" value="all">all room types</option>
+            <option tabindex="0" class="type-hover" value="residential suite">residential suite</option>
+            <option tabindex="0" class="type-hover" value="junior suite">junior suite</option>
+            <option tabindex="0" class="type-hover" value="single room">single room</option>
+            <option tabindex="0" class="type-hover" value="suite">suite</option>
+          </select>
           <!-- <p class="info">info</p> -->
           <div class="dropdown-room-type" id="dropdown">
-            <p tabindex="0" class="type-hover" data-info="residential suite">residential suite</p>
-            <p tabindex="0" class="type-hover" data-info="junior suite">junior suite</p>
-            <p tabindex="0" class="type-hover" data-info="single room">single room</p>
-            <p tabindex="0" class="type-hover" data-info="suite">suite</p>
+
           </div>
+          <button class="search-button">search</button>
         </div>
 
 
       </div>
       <section class="all-bookings-display-container">
-        <div class="booking-card" id=1>
+        <!-- <div class="booking-card" id=1>
           <div class="room-cost">
             <div class="room">
               <p>Room Info</p>
@@ -352,7 +354,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </section>
     </main>
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
