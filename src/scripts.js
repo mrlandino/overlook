@@ -62,11 +62,19 @@ bookARoomButton.addEventListener('click', function() {
 
 searchButton.addEventListener('click', function() {
   event.preventDefault();
-  // allBookings.updateRoomsAvailable(searchDateInput.value, searchTypeInput.value);
-  //DOM update to display the allbookings.roomsAvailable
-  // console.log(allBookings)
-  allBookings.availableRoomsByDate(selectDateInput.value)
-  domUpdateMethods.loadCurrentOpenings(allBookings.roomsAvailable)
+  console.log("YOU HIT THE SEARCH BUTTON")
+  console.log(searchByTypeInput.value, selectDateInput.value)
+  if(searchByTypeInput.value !== ''){
+    console.log("SEARCH BY TYPE")
+    allBookings.availableRoomsByType(searchByTypeInput.value, selectDateInput.value)
+    // domUpdateMethods.loadCurrentOpenings(allBookings.roomsAvailable)
+  } else if (searchByTypeInput.value === '' && selectDateInput.value !== '') {
+    console.log("SEARCH BY DATE")
+    allBookings.availableRoomsByDate(selectDateInput.value)
+    // domUpdateMethods.loadCurrentOpenings(allBookings.roomsAvailable)
+  } else if (searchByTypeInput.value === '' && selectDateInput.value === '') {
+    domUpdateMethods.searchErrorMessage();
+  }
 
 
 })
