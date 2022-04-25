@@ -4,9 +4,11 @@ let landingPage = document.querySelector(".landing-page");
 let customerPage = document.querySelector(".customer-page");
 let bookARoomPage = document.querySelector(".book-a-room-page");
 let userName = document.querySelector(".user-name");
+let userName2 = document.querySelector(".user-name-2");
 let totalSpent = document.querySelector(".total-spent");
 let totalBookings = document.querySelector(".total-bookings");
 let customerBookingsContainer = document.querySelector(".customer-bookings-display-container");
+let allBookingsDisplayContainer = document.querySelector("all-bookings-display-container");
 
 
 const domUpdateMethods = {
@@ -18,12 +20,49 @@ const domUpdateMethods = {
 
   loadCustomerDashboard() {
     domUpdateMethods.showElement([customerPage]);
-    domUpdateMethods.hideElement([landingPage]);
+    domUpdateMethods.hideElement([landingPage, bookARoomPage]);
   },
 
-  loadBookingsPage() {
+  loadBookingsPage(customer) {
     domUpdateMethods.showElement([bookARoomPage]);
     domUpdateMethods.hideElement([customerPage]);
+    domUpdateMethods.displayUserName(customer);
+  },
+
+  loadCurrentOpenings(allBookingsMaster) {
+
+
+    let allBookings = '';
+
+    allBookingsMaster.forEach(booking => {
+    allbookings += `<div class="booking-card" id=1>
+                      <div class="room-cost">
+                        <div class="room">
+                          <p>Room Info</p>
+                        </div>
+                        <div class="cost">
+                          <p>Cost per Night</p>
+                        </div>
+                      </div>
+                      <div class="booking-details-container">
+                        <div class="booking-details">
+                          <p>Room Number: 1</p>
+                          <p>Room Type: Single Room</p>
+                          <p>Bidet: ${domUpdateMethods.bidetStatus(booking.bidet)}</p>
+                          <p>Bed Size: King</p>
+                          <p>Number of Beds: 1</p>
+                        </div>
+                        <div class="cost-per-night-container">
+                          <div class="cost-container">
+                            <p>$800.35</p>
+                          </div>
+                          <div class="book-room-container">
+                            <button class="book-room">Book Room</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>`
+    });
   },
 
   showElement(elements) {
@@ -34,8 +73,9 @@ const domUpdateMethods = {
     elements.forEach(element => element.classList.add("hidden"));
   },
 
-  displayUserName(currentCustomer) {
-    userName.innerText = currentCustomer.name;
+  displayUserName(customer) {
+    userName.innerText = customer.name;
+    userName2.innerText = customer.name;
   },
 
   displayUserTotals(currentCustomer) {
@@ -56,9 +96,9 @@ const domUpdateMethods = {
 
     currentCustomer.myBookings.forEach(booking => {
         if(booking.bookingStatus === "upcoming") {
-        status = `class="status upcoming">Status: upcoming`;
+        status = `class="status upcoming">Status: Upcoming`;
         } else if(booking.bookingStatus === "completed") {
-        status = `class="status completed">Status: completed`;
+        status = `class="status completed">Status: Completed`;
         }
 
       allBookings += `<div class="booking-card" id=1>
@@ -73,7 +113,7 @@ const domUpdateMethods = {
                         <div class="booking-details-container">
                           <div class="booking-details">
                             <p>Room Type: ${booking.roomType}</p>
-                            <p>Bidet: ${booking.bidet}</p>
+                            <p>Bidet: ${domUpdateMethods.bidetStatus(booking.bidet)}</p>
                             <p>Bed Size: ${booking.bedSize}</p>
                             <p>Number of Beds: ${booking.numBeds}</p>
                           </div>
@@ -90,6 +130,15 @@ const domUpdateMethods = {
       })
     customerBookingsContainer.innerHTML = allBookings;
   },
+
+  bidetStatus(bidet) {
+    if(bidet) {
+      return "Yes";
+    } else if (!bidet) {
+      return "No";
+    };
+  },
+
 
 }
 
