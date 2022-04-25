@@ -8,7 +8,7 @@ let userName2 = document.querySelector(".user-name-2");
 let totalSpent = document.querySelector(".total-spent");
 let totalBookings = document.querySelector(".total-bookings");
 let customerBookingsContainer = document.querySelector(".customer-bookings-display-container");
-let allBookingsDisplayContainer = document.querySelector("all-bookings-display-container");
+let allBookingsDisplayContainer = document.querySelector(".all-bookings-display-container");
 
 
 const domUpdateMethods = {
@@ -29,13 +29,13 @@ const domUpdateMethods = {
     domUpdateMethods.displayUserName(customer);
   },
 
-  loadCurrentOpenings(allBookingsMaster) {
+  loadCurrentOpenings(openings) {
 
 
     let allBookings = '';
 
-    allBookingsMaster.forEach(booking => {
-    allbookings += `<div class="booking-card" id=1>
+    openings.forEach(room => {
+    allBookings += `<div class="booking-card" id=1>
                       <div class="room-cost">
                         <div class="room">
                           <p>Room Info</p>
@@ -46,15 +46,15 @@ const domUpdateMethods = {
                       </div>
                       <div class="booking-details-container">
                         <div class="booking-details">
-                          <p>Room Number: 1</p>
-                          <p>Room Type: Single Room</p>
-                          <p>Bidet: ${domUpdateMethods.bidetStatus(booking.bidet)}</p>
-                          <p>Bed Size: King</p>
-                          <p>Number of Beds: 1</p>
+                          <p>Room Number: ${room.roomNumber}</p>
+                          <p>Room Type: ${room.roomType}</p>
+                          <p>Bidet: ${domUpdateMethods.bidetStatus(room.bidet)}</p>
+                          <p>Bed Size: ${room.bedSize}</p>
+                          <p>Number of Beds: ${room.numBeds}</p>
                         </div>
                         <div class="cost-per-night-container">
                           <div class="cost-container">
-                            <p>$800.35</p>
+                            <p>$${room.roomCost.toFixed(2)}</p>
                           </div>
                           <div class="book-room-container">
                             <button class="book-room">Book Room</button>
@@ -63,6 +63,8 @@ const domUpdateMethods = {
                       </div>
                     </div>`
     });
+
+    allBookingsDisplayContainer.innerHTML = allBookings;
   },
 
   showElement(elements) {
