@@ -18,6 +18,12 @@ const domUpdateMethods = {
       console.log("please input a username and password")
   },
 
+  searchErrorMessage() {
+    //NEED innerHTML to send customer loginErrorMessage
+    allBookingsDisplayContainer.innerHTML = '';
+    console.log("please slect a date")
+  },
+
   loadCustomerDashboard() {
     domUpdateMethods.showElement([customerPage]);
     domUpdateMethods.hideElement([landingPage, bookARoomPage]);
@@ -30,10 +36,8 @@ const domUpdateMethods = {
   },
 
   loadCurrentOpenings(openings) {
-
-
     let allBookings = '';
-
+    allBookingsDisplayContainer.innerHTML = '';
     openings.forEach(room => {
     allBookings += `<div class="booking-card" id=1>
                       <div class="room-cost">
