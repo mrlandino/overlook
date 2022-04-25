@@ -64,15 +64,15 @@ searchButton.addEventListener('click', function() {
   event.preventDefault();
   console.log("YOU HIT THE SEARCH BUTTON")
   console.log(searchByTypeInput.value, selectDateInput.value)
-  if(searchByTypeInput.value !== ''){
+  if(searchByTypeInput.value !== 'all'){
     console.log("SEARCH BY TYPE")
     allBookings.availableRoomsByType(searchByTypeInput.value, selectDateInput.value)
     // domUpdateMethods.loadCurrentOpenings(allBookings.roomsAvailable)
-  } else if (searchByTypeInput.value === '' && selectDateInput.value !== '') {
+  } else if (searchByTypeInput.value === 'all' && selectDateInput.value !== '') {
     console.log("SEARCH BY DATE")
     allBookings.availableRoomsByDate(selectDateInput.value)
     // domUpdateMethods.loadCurrentOpenings(allBookings.roomsAvailable)
-  } else if (searchByTypeInput.value === '' && selectDateInput.value === '') {
+  } else if (searchByTypeInput.value === 'all' && selectDateInput.value === '') {
     domUpdateMethods.searchErrorMessage();
   }
 
