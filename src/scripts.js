@@ -24,6 +24,8 @@ let searchButton = document.querySelector(".search-button");
 let searchDateInput = document.querySelector(".select-date-input");
 let searchTypeInput = document.querySelector(".dropdown-filter-input");
 let myBookingsButton = document.querySelector(".my-bookings");
+let selectDateInput = document.querySelector(".select-date-input");
+let searchByTypeInput = document.querySelector(".dropdown-filter-input");
 
 //EVENT LISTENERS:
 window.onload = (event) => loadWindow();
@@ -53,7 +55,6 @@ myBookingsButton.addEventListener('click', function() {
 
 bookARoomButton.addEventListener('click', function() {
   event.preventDefault();
-  console.log("TO DISPLAY NAME", currentCustomer.name)
   domUpdateMethods.loadBookingsPage(currentCustomer);
 
 
@@ -63,7 +64,9 @@ searchButton.addEventListener('click', function() {
   event.preventDefault();
   // allBookings.updateRoomsAvailable(searchDateInput.value, searchTypeInput.value);
   //DOM update to display the allbookings.roomsAvailable
-  domUpdateMethods.loadCurrentOpenings(allBookings.allBookinsMaster)
+  // console.log(allBookings)
+  allBookings.availableRoomsByDate(selectDateInput.value)
+  domUpdateMethods.loadCurrentOpenings(allBookings.roomsAvailable)
 
 
 })
@@ -80,7 +83,6 @@ const loadCustomerData = (id) => {
       domUpdateMethods.displayUserName(currentCustomer);
       domUpdateMethods.displayUserTotals(currentCustomer);
       domUpdateMethods.dislayCustomerBookingCards(currentCustomer);
-      console.log(currentCustomer)
   });
 }
 
