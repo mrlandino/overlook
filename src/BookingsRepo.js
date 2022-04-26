@@ -39,9 +39,7 @@ class BookingsRepo {
   }
 
   availableRoomsByDate(date) {
-    console.log("BEFORE", this.roomsAvailable)
     this.roomsAvailable = this.allRoomsMaster;
-    console.log("AFTER ASSIGNING", this.roomsAvailable)
 
     if(date === '') {
       domUpdateMethods.searchErrorMessage();
@@ -68,7 +66,7 @@ class BookingsRepo {
 
   availableRoomsByType(type, date) {
     this.availableRoomsByDate(date);
-    if(date !== '' && type !== ''){
+    if(date !== '' && type !== '') {
       this.roomsAvailable = this.roomsAvailable.filter(room => {
         return room.roomType === type;
       });
