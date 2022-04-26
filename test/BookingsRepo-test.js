@@ -22,7 +22,7 @@ describe('BookingsRepo Class', function() {
     expect(allBookings).to.be.an.instanceOf(BookingsRepo)
   })
 
-  it('should update the Bookings Master list to hold all booking inforomation', () => {
+  it('should update the Bookings Master list to hold all booking information', () => {
     expect(allBookings.allBookingsMaster[0].roomNumber).to.equal(15)
     expect(allBookings.allBookingsMaster[0].roomNumber).to.be.a("number")
 
