@@ -146,6 +146,7 @@ const domUpdateMethods = {
     domUpdateMethods.hideElement([bookingCard]);
   },
 
+//**** ADDITION TO BE MADE ****
   // changeCalendarMin() {
   //   var dateControl = document.querySelector('input[type="date"]');
   //   dateControl.value = new Date();

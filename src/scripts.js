@@ -81,6 +81,7 @@ const loadCustomerData = (id) => {
       domUpdateMethods.displayUserName(currentCustomer);
       domUpdateMethods.displayUserTotals(currentCustomer);
       domUpdateMethods.dislayCustomerBookingCards(currentCustomer);
+      //**** ADDITION TO BE MADE ****
       // domUpdateMethods.changeCalendarMin();
   });
 };
