@@ -1,4 +1,3 @@
-//this will be for adding all booking information needed at all timeStamp
 class Booking {
   constructor(room, booking) {
     this.roomNumber = booking.roomNumber;
@@ -10,21 +9,21 @@ class Booking {
     this.customerID = booking.userID;
     this.date = booking.date;
     this.currentDate = new Date().getTime();
-    this.timeStamp = this.calculateTimeStamp();
-    this.displayDate = this.calculateDisplayDate();
-    this.bookingStatus = this.determineBookingStatus();
+    this.timeStamp = this.calculateTimeStamp(this.date);
+    this.displayDate = this.calculateDisplayDate(this.timeStamp);
+    this.bookingStatus = this.determineBookingStatus(this.timeStamp, this.currentDate);
   }
 
-  calculateTimeStamp() {
-    return new Date(this.date).getTime();
+  calculateTimeStamp(date) {
+    return new Date(date).getTime();
   }
 
-  calculateDisplayDate() {
-    return new Date(this.timeStamp).toDateString();
+  calculateDisplayDate(timeStamp) {
+    return new Date(timeStamp).toDateString();
   }
 
-  determineBookingStatus() {
-    if (this.timeStamp >= this.currentDate) {
+  determineBookingStatus(timeStamp, currentDate) {
+    if (timeStamp >= currentDate) {
       return "upcoming";
     } else {
       return "completed";
