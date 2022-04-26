@@ -1,5 +1,3 @@
-// let username = document.querySelector(".username-input");
-// let password = document.querySelector(".password-input");
 let landingPage = document.querySelector(".landing-page");
 let customerPage = document.querySelector(".customer-page");
 let bookARoomPage = document.querySelector(".book-a-room-page");
@@ -37,38 +35,43 @@ const domUpdateMethods = {
 
   loadCurrentOpenings(openings) {
     let allBookings = '';
-    allBookingsDisplayContainer.innerHTML = '';
-    openings.forEach(room => {
-    allBookings += `<div class="booking-card" id=1>
-                      <div class="room-cost">
-                        <div class="room">
-                          <p>Room Info</p>
-                        </div>
-                        <div class="cost">
-                          <p>Cost per Night</p>
-                        </div>
-                      </div>
-                      <div class="booking-details-container">
-                        <div class="booking-details">
-                          <p>Room Number: ${room.roomNumber}</p>
-                          <p>Room Type: ${room.roomType}</p>
-                          <p>Bidet: ${domUpdateMethods.bidetStatus(room.bidet)}</p>
-                          <p>Bed Size: ${room.bedSize}</p>
-                          <p>Number of Beds: ${room.numBeds}</p>
-                        </div>
-                        <div class="cost-per-night-container">
-                          <div class="cost-container">
-                            <p>$${room.roomCost.toFixed(2)}</p>
-                          </div>
-                          <div class="book-room-container">
-                            <button class="book-room">Book Room</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>`
-    });
+    if(openings.length === 0) {
+      allBookingsDisplayContainer.innerHTML = '<p>PLEASE SHOW UP</p>';
+    } else {
+      allBookingsDisplayContainer.innerHTML = '';
+      openings.forEach(room => {
+        allBookings += `<div class="booking-card ${room.roomNumber}" id=R${room.roomNumber}>
+        <div class="room-cost">
+        <div class="room">
+        <p>Room Info</p>
+        </div>
+        <div class="cost">
+        <p>Cost per Night</p>
+        </div>
+        </div>
+        <div class="booking-details-container">
+        <div class="booking-details">
+        <p>Room Number: ${room.roomNumber}</p>
+        <p>Room Type: ${room.roomType}</p>
+        <p>Bidet: ${domUpdateMethods.bidetStatus(room.bidet)}</p>
+        <p>Bed Size: ${room.bedSize}</p>
+        <p>Number of Beds: ${room.numBeds}</p>
+        </div>
+        <div class="cost-per-night-container">
+        <div class="cost-container">
+        <p>$${room.roomCost.toFixed(2)}</p>
+        </div>
+        <div class="book-room-container">
+        <button class="book-room" id=${room.roomNumber}>Book Room</button>
+        </div>
+        </div>
+        </div>
+        </div>`
+      });
 
-    allBookingsDisplayContainer.innerHTML = allBookings;
+      allBookingsDisplayContainer.innerHTML = allBookings;
+
+    }
   },
 
   showElement(elements) {
@@ -145,6 +148,12 @@ const domUpdateMethods = {
     };
   },
 
+  changeBookRoomButton(id) {
+    console.log("YOU ARE CHANGING BUTTON", id)
+    let bookingCard = document.getElementById(`R${id}`);
+    domUpdateMethods.hideElement([bookingCard]);
+
+  }
 
 }
 
