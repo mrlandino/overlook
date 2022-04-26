@@ -7,19 +7,16 @@ let totalSpent = document.querySelector(".total-spent");
 let totalBookings = document.querySelector(".total-bookings");
 let customerBookingsContainer = document.querySelector(".customer-bookings-display-container");
 let allBookingsDisplayContainer = document.querySelector(".all-bookings-display-container");
-
+let passwordContainer = document.querySelector(".password-usename-error-container");
 
 const domUpdateMethods = {
 
   loginErrorMessage() {
-      //NEED innerHTML message to send to customer
-      console.log("please input a username and password")
+      passwordContainer.innerHTML = '<p class="username-password-error">Please input a username and password</p>';
   },
 
   searchErrorMessage() {
-    //NEED innerHTML to send customer loginErrorMessage
-    allBookingsDisplayContainer.innerHTML = '';
-    console.log("please slect a date")
+    allBookingsDisplayContainer.innerHTML = '<p class="date-entry-error">Please select a date to search bookings available</p>';
   },
 
   loadCustomerDashboard() {
@@ -36,7 +33,7 @@ const domUpdateMethods = {
   loadCurrentOpenings(openings) {
     let allBookings = '';
     if(openings.length === 0) {
-      allBookingsDisplayContainer.innerHTML = '<p>PLEASE SHOW UP</p>';
+      allBookingsDisplayContainer.innerHTML = '<p class= "none-available">Apololiges for the inconvience. <br> All rooms are booked for this day. <br> Please choose another date or room type. </p>';
     } else {
       allBookingsDisplayContainer.innerHTML = '';
       openings.forEach(room => {
@@ -70,12 +67,11 @@ const domUpdateMethods = {
       });
 
       allBookingsDisplayContainer.innerHTML = allBookings;
-
     }
   },
 
   showElement(elements) {
-  elements.forEach(element => element.classList.remove("hidden"));
+    elements.forEach(element => element.classList.remove("hidden"));
   },
 
   hideElement(elements) {
@@ -153,8 +149,12 @@ const domUpdateMethods = {
     let bookingCard = document.getElementById(`R${id}`);
     domUpdateMethods.hideElement([bookingCard]);
 
-  }
+  },
 
+  // changeCalendarMin() {
+  //   var dateControl = document.querySelector('input[type="date"]');
+  //   dateControl.value = new Date();
+  // }
 }
 
 export default domUpdateMethods;
