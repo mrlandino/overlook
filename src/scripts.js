@@ -1,6 +1,5 @@
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.css';
-import { getAllData, getSpecificData } from './apiCalls';
+import { getAllData, getSpecificData, postBooking } from './apiCalls';
 import AllCustomers from './AllCustomers';
 import AllRooms from './AllRooms';
 import BookingsRepo from './BookingsRepo';
@@ -8,24 +7,24 @@ import Booking from './Booking';
 import Customer from './Customer';
 import domUpdateMethods from './updateDOM';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-// import './images/turing-logo.png'
-
 let allCustomers, allBookings, allRooms, currentCustomer
 
+
 //QUERY SELECTORS:
-let signInButton = document.querySelector(".sign-in-button");
-let username = document.querySelector(".username-input");
-let password = document.querySelector(".password-input");
-let logOutButton = document.querySelector(".logout");
-let logOutButton2 = document.querySelector(".logout-2");
-let bookARoomButton = document.querySelector(".book-a-room");
-let searchButton = document.querySelector(".search-button");
-let searchDateInput = document.querySelector(".select-date-input");
-let searchTypeInput = document.querySelector(".dropdown-filter-input");
-let myBookingsButton = document.querySelector(".my-bookings");
-let selectDateInput = document.querySelector(".select-date-input");
-let searchByTypeInput = document.querySelector(".dropdown-filter-input");
+const signInButton = document.querySelector(".sign-in-button");
+const username = document.querySelector(".username-input");
+const password = document.querySelector(".password-input");
+const logOutButton = document.querySelector(".logout");
+const logOutButton2 = document.querySelector(".logout-2");
+const bookARoomButton = document.querySelector(".book-a-room");
+const searchButton = document.querySelector(".search-button");
+const searchDateInput = document.querySelector(".select-date-input");
+const searchTypeInput = document.querySelector(".dropdown-filter-input");
+const myBookingsButton = document.querySelector(".my-bookings");
+const selectDateInput = document.querySelector(".select-date-input");
+const searchByTypeInput = document.querySelector(".dropdown-filter-input");
+const allBookingsDisplayContainer = document.querySelector(".all-bookings-display-container");
+
 
 //EVENT LISTENERS:
 window.onload = (event) => loadWindow();
@@ -56,27 +55,24 @@ myBookingsButton.addEventListener('click', function() {
 bookARoomButton.addEventListener('click', function() {
   event.preventDefault();
   domUpdateMethods.loadBookingsPage(currentCustomer);
-
-
 })
 
 searchButton.addEventListener('click', function() {
   event.preventDefault();
-  console.log("YOU HIT THE SEARCH BUTTON")
-  console.log(searchByTypeInput.value, selectDateInput.value)
-  if(searchByTypeInput.value !== 'all'){
-    console.log("SEARCH BY TYPE")
-    allBookings.availableRoomsByType(searchByTypeInput.value, selectDateInput.value)
-    // domUpdateMethods.loadCurrentOpenings(allBookings.roomsAvailable)
-  } else if (searchByTypeInput.value === 'all' && selectDateInput.value !== '') {
-    console.log("SEARCH BY DATE")
-    allBookings.availableRoomsByDate(selectDateInput.value)
-    // domUpdateMethods.loadCurrentOpenings(allBookings.roomsAvailable)
-  } else if (searchByTypeInput.value === 'all' && selectDateInput.value === '') {
-    domUpdateMethods.searchErrorMessage();
+  displayBookings();
+})
+
+allBookingsDisplayContainer.addEventListener('click', function(e) {
+  if(e.target.classList.contains("book-room")) {
+    domUpdateMethods.changeBookRoomButton(e.target.id);
+    postBooking(makePostBookingObj(e))
+    .then((data) => {
+      getSpecificData('bookings')
+      .then((data) => {
+        allCustomers = data.customers;
+      })
+    })
   }
-
-
 })
 
 //RENDER ALL DATA:
@@ -91,6 +87,7 @@ const loadCustomerData = (id) => {
       domUpdateMethods.displayUserName(currentCustomer);
       domUpdateMethods.displayUserTotals(currentCustomer);
       domUpdateMethods.dislayCustomerBookingCards(currentCustomer);
+      // domUpdateMethods.changeCalendarMin();
   });
 }
 
@@ -117,8 +114,28 @@ const loginValidation = (username, password) => {
 
   if(validation.length === 1) {
     loadCustomerData(getCustomerId());
-    console.log("load new page");
   } else if (validation.length === 0){
     domUpdateMethods.loginErrorMessage();
   }
+}
+
+const displayBookings = () => {
+  if(searchByTypeInput.value !== 'all'){
+    allBookings.availableRoomsByType(searchByTypeInput.value, selectDateInput.value)
+  } else if (searchByTypeInput.value === 'all' && selectDateInput.value !== '') {
+    allBookings.availableRoomsByDate(selectDateInput.value)
+  } else if (searchByTypeInput.value === 'all' && selectDateInput.value === '') {
+    domUpdateMethods.searchErrorMessage();
+  }
+}
+
+const makePostBookingObj = (e) => {
+  let updatedDate = selectDateInput.value;
+  let thisDate = updatedDate.replace('-', '/');
+  let thisDate1 = thisDate.replace('-', '/');
+  return {
+    "userID": currentCustomer.id,
+    "date": thisDate1,
+    "roomNumber": Number(e.target.id)
+  };
 }

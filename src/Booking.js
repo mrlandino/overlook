@@ -17,7 +17,6 @@ class Booking {
 
   calculateTimeStamp() {
     return new Date(this.date).getTime();
-    console.log("TIMESTAMP", new Date(this.date).getTime())
   }
 
   calculateDisplayDate() {
