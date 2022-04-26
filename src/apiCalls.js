@@ -18,7 +18,6 @@ const getAllData = (id) => {
 };
 
 const postBooking = (bookingRequestObj) => {
-  console.log(bookingRequestObj)
   return fetch("http://localhost:3001/api/v1/bookings", {
     method: 'POST',
     headers: {
@@ -37,7 +36,6 @@ const checkForError = (response) => {
     return response.json()
   }
 }
-//need to post new data here with new functions
-//error handling function?
+
 
 export { getAllData, getSpecificData, postBooking };
