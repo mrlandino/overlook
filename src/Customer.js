@@ -14,9 +14,9 @@ class Customer {
     let myBookingsList = this.allBookings.allBookingsMaster.reduce((acc, booking) => {
       if(booking.customerID === this.id) {
         acc.push(booking);
-      }
+      };
       return acc;
-    },[])
+    },[]);
 
     this.myBookings = myBookingsList;
 
@@ -25,7 +25,7 @@ class Customer {
     let moneySpent = this.myBookings.reduce((total, booking) => {
       total += booking.roomCost;
       return total;
-    }, 0)
+    }, 0);
 
     this.totalSpent = (Math.round(moneySpent * Math.pow(10,2)) / Math.pow(10,2)).toFixed(2);
 

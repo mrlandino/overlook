@@ -14,11 +14,11 @@ class BookingsRepo {
     let updatedList = this.bookings.reduce((acc, booking) => {
       this.allRooms.rooms.forEach(room => {
         if(room.number === booking.roomNumber) {
-          acc.push(new Booking(room, booking))
-        }
-      })
+          acc.push(new Booking(room, booking));
+        };
+      });
       return acc;
-    }, [])
+    }, []);
     return updatedList;
   }
 
@@ -27,12 +27,12 @@ class BookingsRepo {
     let updatedList = this.allRooms.rooms.reduce((acc, room) => {
       this.allBookingsMaster.forEach(booking => {
         if(room.number === booking.roomNumber && !roomList.includes(room.number)) {
-          roomList.push(room.number)
-          acc.push(new Room(booking))
-        }
+          roomList.push(room.number);
+          acc.push(new Room(booking));
+        };
       });
       return acc;
-    }, [])
+    }, []);
 
     return updatedList;
   }

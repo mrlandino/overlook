@@ -12,7 +12,7 @@ let passwordContainer = document.querySelector(".password-usename-error-containe
 const domUpdateMethods = {
 
   loginErrorMessage() {
-      passwordContainer.innerHTML = '<p class="username-password-error">Please input a username and password</p>';
+    passwordContainer.innerHTML = '<p class="username-password-error">Please input a username and password</p>';
   },
 
   searchErrorMessage() {
@@ -38,36 +38,35 @@ const domUpdateMethods = {
       allBookingsDisplayContainer.innerHTML = '';
       openings.forEach(room => {
         allBookings += `<div class="booking-card ${room.roomNumber}" id=R${room.roomNumber}>
-        <div class="room-cost">
-        <div class="room">
-        <p>Room Info</p>
-        </div>
-        <div class="cost">
-        <p>Cost per Night</p>
-        </div>
-        </div>
-        <div class="booking-details-container">
-        <div class="booking-details">
-        <p>Room Number: ${room.roomNumber}</p>
-        <p>Room Type: ${room.roomType}</p>
-        <p>Bidet: ${domUpdateMethods.bidetStatus(room.bidet)}</p>
-        <p>Bed Size: ${room.bedSize}</p>
-        <p>Number of Beds: ${room.numBeds}</p>
-        </div>
-        <div class="cost-per-night-container">
-        <div class="cost-container">
-        <p>$${room.roomCost.toFixed(2)}</p>
-        </div>
-        <div class="book-room-container">
-        <button class="book-room" id=${room.roomNumber}>Book Room</button>
-        </div>
-        </div>
-        </div>
-        </div>`
+                          <div class="room-cost">
+                            <div class="room">
+                              <p>Room Info</p>
+                            </div>
+                            <div class="cost">
+                              <p>Cost per Night</p>
+                            </div>
+                          </div>
+                          <div class="booking-details-container">
+                            <div class="booking-details">
+                              <p>Room Number: ${room.roomNumber}</p>
+                              <p>Room Type: ${room.roomType}</p>
+                              <p>Bidet: ${domUpdateMethods.bidetStatus(room.bidet)}</p>
+                              <p>Bed Size: ${room.bedSize}</p>
+                              <p>Number of Beds: ${room.numBeds}</p>
+                            </div>
+                            <div class="cost-per-night-container">
+                              <div class="cost-container">
+                                <p>$${room.roomCost.toFixed(2)}</p>
+                              </div>
+                              <div class="book-room-container">
+                                <button class="book-room" id=${room.roomNumber}>Book Room</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>`
       });
-
       allBookingsDisplayContainer.innerHTML = allBookings;
-    }
+    };
   },
 
   showElement(elements) {
@@ -86,13 +85,11 @@ const domUpdateMethods = {
   displayUserTotals(currentCustomer) {
     currentCustomer.updateMyBookings();
 
-    console.log("AFTER UPDATE", currentCustomer);
     let moneySpent = currentCustomer.totalSpent;
     let allBookings = currentCustomer.numBookings;
 
     totalSpent.innerText = `Total Spent: $${moneySpent}`;
     totalBookings.innerText = `Total Bookings: ${allBookings}`;
-
   },
 
   dislayCustomerBookingCards(currentCustomer) {
@@ -104,7 +101,7 @@ const domUpdateMethods = {
         status = `class="status upcoming">Status: Upcoming`;
         } else if(booking.bookingStatus === "completed") {
         status = `class="status completed">Status: Completed`;
-        }
+        };
 
       allBookings += `<div class="booking-card" id=1>
                         <div class="date-room">
@@ -132,7 +129,7 @@ const domUpdateMethods = {
                           </div>
                         </div>
                       </div>`;
-      })
+      });
     customerBookingsContainer.innerHTML = allBookings;
   },
 
@@ -145,10 +142,8 @@ const domUpdateMethods = {
   },
 
   changeBookRoomButton(id) {
-    console.log("YOU ARE CHANGING BUTTON", id)
     let bookingCard = document.getElementById(`R${id}`);
     domUpdateMethods.hideElement([bookingCard]);
-
   },
 
   // changeCalendarMin() {

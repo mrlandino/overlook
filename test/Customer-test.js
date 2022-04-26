@@ -5,24 +5,24 @@ import Customer from '../src/Customer';
 import BookingsRepo from '../src/BookingsRepo';
 import AllCustomers from '../src/AllCustomers';
 
-describe('Customer Class', function() {
-  let data, allBookings, newCustomer, allCustomers, newCustomer2
+describe('Customer Class', () => {
+  let data, allBookings, newCustomer, allCustomers, newCustomer2;
 
   beforeEach(() => {
     data = sampleData;
     allBookings = new BookingsRepo(data, data);
-    allCustomers = new AllCustomers(data.customers)
+    allCustomers = new AllCustomers(data.customers);
 
     newCustomer = new Customer(allCustomers.allCustomers[1], allBookings);
     newCustomer2 = new Customer(allCustomers.allCustomers[2], allBookings);
   })
 
-  it('should be a function', function() {
+  it('should be a function', () => {
     expect(Customer).to.be.a('function');
-  });
+  })
 
   it('should be an instance of Customer', () => {
-    expect(newCustomer).to.be.an.instanceOf(Customer)
+    expect(newCustomer).to.be.an.instanceOf(Customer);
   })
 
   it('should hold all Customer inforomation', () => {
@@ -42,12 +42,12 @@ describe('Customer Class', function() {
   })
 
   it('should update my bookings, number of bookings, and total spent', () => {
-    newCustomer.updateMyBookings()
+    newCustomer.updateMyBookings();
     expect(newCustomer.myBookings[0].roomNumber).to.equal(17);
     expect(newCustomer.totalSpent).to.equal("7557.95");
     expect(newCustomer.numBookings).to.equal(20);
 
-    newCustomer2.updateMyBookings()
+    newCustomer2.updateMyBookings();
     expect(newCustomer2.myBookings[0].roomNumber).to.equal(24);
     expect(newCustomer2.totalSpent).to.equal("4204.39");
     expect(newCustomer2.numBookings).to.equal(12);

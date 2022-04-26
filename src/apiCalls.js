@@ -6,7 +6,7 @@ const getSpecificData = (suffix) => {
 const getCustomerData = (id) => {
   const url = 'http://localhost:3001/api/v1/customers/';
   return fetch(`${url}${id}`).then((response) => response.json());
-}
+};
 
 const getAllData = (id) => {
   return Promise.all([
@@ -26,16 +26,15 @@ const postBooking = (bookingRequestObj) => {
     body: JSON.stringify(bookingRequestObj),
   })
   .then(response => checkForError(response))
-
-}
+};
 
 const checkForError = (response) => {
   if (!response.ok) {
     throw new Error("Please make sure that all fields are filled out and that the POST path is correct");
   } else {
     return response.json()
-  }
-}
+  };
+};
 
 
 export { getAllData, getSpecificData, postBooking };

@@ -4,7 +4,7 @@ import sampleData from './testData';
 import AllCustomers from '../src/AllCustomers';
 
 
-describe('All Customers Class', function() {
+describe('All Customers Class', () => {
   let data, allCustomers
 
   beforeEach(() => {
@@ -12,7 +12,7 @@ describe('All Customers Class', function() {
     allCustomers = new AllCustomers(data.customers);
   })
 
-  it('should be a function', function() {
+  it('should be a function', () => {
     expect(AllCustomers).to.be.a('function');
   });
 
