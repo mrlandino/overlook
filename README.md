@@ -1,61 +1,93 @@
+# Overlook
+
+<img src="src/images/Screen Shot 2022-04-26 at 4.40.39 PM.png" width="500"/>
+
+## Table of Contents
+
+  - [Introduction](#introduction)
+  - [Learning Goals](#learning-goals)
+  - [Technologies](#technologies)
+  - [Features](#features)
+  - [Page Demo](#page-demo)
+  - [Set Up](#set-up)
+  - [Contributors](#contributors)
+  - [Project Specs](#project-specs)
+  - [Project GitHub Repo](#project-github-repo)
+  - [Additional Resources](#additional-resources)
+
+## Introduction
+The Overlook project was a solo assignment for Turing School of Software and Design's Front End Module 2. This site allows a user to sign in and book hotel rooms based on preference. Users have the ability to filter through rooms via date as well as roomType.
+
+The goals for this project included incorporating Fetch calls and interaction with a backend API. I wrote test files for each class and the method within those classes - getting more comfortable with Mocha and Chai in the process.
+
+The biggest wins was being able to complete this project exactly how I wanted it to be in the time that we had, becoming more familiar with fetch requests, and gaining a deeper understanding of real-world application of iterator methods.
+
+My biggest challenge was grasping the vastness of the project. In comparison to  previous works, this project is significantly larger in scale and complexity. Also, being able to write this whole application from scratch was another big challenge.
 
 
+## Learning Goals
+  - Use OOP to drive the design of the application and the code
+  - Practice iterator methods to perform data manipulation in an effort to achieve desired functionalities.
+  - Create a robust test suite that thoroughly tests all functionality of a client-side application
+  - Work with an API to send and receive data
 
-## Clone This Repo
+## Technologies
+  - Javascript
+  - HTML
+  - CSS
+  - Mocha
+  - Chai
+  - Fetch API
+  - Webpack
+  - NPM
+  - Lighthouse (accessibility)
 
-That's right, _clone_ not fork. You will use this repo multiple times, but you can only fork a repository once. So here is what you need to do to clone the repo and still be able to push changes to your repo:
-
-1. Clone down this repo. Since you don't want to name your project "webpack-starter-kit", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Remove the default remote: `git remote rm origin` (notice that `git remote -v` not gives you back nothing)
-1. Create a new repo on GitHub with the name of `[what you want to name the repo]` to be consistent with naming
-1. Copy the address that you would use to clone down this repo - something like `git@github.com:...`
-1. Add this remote to your cloned down repo: `git remote add origin [address you copied in the previous step]` - do not include the brackets
-
-Now try to commit something (just add a line in the README) and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
-
-Testing, testing, testing.
-
-## Setup
-
-After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo.
-
-Then install the library dependencies. Run:
-
-```bash
-npm install
-```
-
-To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with the Turing logo image and a beautiful gradient background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
+## Features
+- When a user loads the browser, they will see a login page that allows them to sign in with provided credentials. For this application you can use a username: customer1-customer50 and I have created a master password of "overlook2021" for the time being.
+- They are able to access their dashboard which shows all of their bookings past and present.
+- From there the user has the ability to click on the "Book a Room" button to book a desired room.
+- While on the book a room page, the user can sort through bookings by date as well as room type if desired.
+- After you have booked a room the card will disappear and the user can then go back to their bookings page or book more rooms.
+- When the user is finished they can "logout" at any point.
 
 
-## How to View Your Code in Action
+## Page Demo
 
-In the terminal, run:
+<img src="src/images/Screen Shot 2022-04-26 at 4.40.39 PM.png" width="500"/>
 
-```bash
-npm start
-```
+Main Page
 
-You will see a bunch of lines output to your terminal. One of those lines will be something like:
+<img src="src/images/Screen Shot 2022-04-26 at 4.40.15 PM.png" width="500"/>
 
-```bash
-Project is running at http://localhost:8080/
-```
+Customer Dashboard
 
-Go to `http://localhost:8080/` in your browser to view your code running in the browser.
+<img src="src/images/Screen Shot 2022-04-26 at 4.40.29 PM.png" width="500"/>
 
----
+Book a Room Page
 
-## Test Files Organization
+<img src="src/images/Screen Shot 2022-04-26 at 2.44.54 PM.png" width="500"/>
 
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
 
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `box-test.js`.
+Accessibility Score
 
----
+## Set Up
+1. Fork and clone this repo.
+2. Read this README thoroughly.
+3. Type `cd overlook` to move into the root directory.
+4. run `npm install` to install neccessary dependencies.
+5. Run `npm start`.
+6. Copy the url given by running `npm start` and open in your browser.
 
-## Linting Your Code
+## Contributors
+- Ross Landino (GitHub: [mrlandino](https://github.com/mrlandino))
 
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
 
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory.
+## Project Specs
+- The specs for this project can be found [here](https://frontend.turing.edu/projects/overlook.html)
+
+## Project GitHub Repo
+<!-- - The project repo can be found [here](INSERT URL). -->
+The deploy link will be updated soon.
+
+## Additional Resources
+- [Figma Wireframe](https://www.figma.com/file/k4XS8nDYiYXVU4cdu3764D/Overlook?node-id=13%3A173)

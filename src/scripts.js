@@ -8,8 +8,6 @@ import domUpdateMethods from './updateDOM';
 
 let allCustomers, allBookings, allRooms, currentCustomer
 
-
-//QUERY SELECTORS:
 const signInButton = document.querySelector(".sign-in-button");
 const username = document.querySelector(".username-input");
 const password = document.querySelector(".password-input");
@@ -24,8 +22,6 @@ const selectDateInput = document.querySelector(".select-date-input");
 const searchByTypeInput = document.querySelector(".dropdown-filter-input");
 const allBookingsDisplayContainer = document.querySelector(".all-bookings-display-container");
 
-
-//EVENT LISTENERS:
 window.onload = (event) => loadWindow();
 
 signInButton.addEventListener('click', function() {
@@ -74,7 +70,6 @@ allBookingsDisplayContainer.addEventListener('click', function(e) {
   }
 });
 
-//RENDER ALL DATA:
 const loadCustomerData = (id) => {
   getAllData(id)
   .then((data) => {
@@ -86,6 +81,7 @@ const loadCustomerData = (id) => {
       domUpdateMethods.displayUserName(currentCustomer);
       domUpdateMethods.displayUserTotals(currentCustomer);
       domUpdateMethods.dislayCustomerBookingCards(currentCustomer);
+      //**** ADDITION TO BE MADE ****
       // domUpdateMethods.changeCalendarMin();
   });
 };
@@ -93,7 +89,7 @@ const loadCustomerData = (id) => {
 const loadWindow = () => {
   getSpecificData('customers')
   .then((data) => {
-    allCustomers = data.customers
+    allCustomers = data.customers;
   });
 };
 
@@ -115,7 +111,7 @@ const loginValidation = (username, password) => {
     loadCustomerData(getCustomerId());
   } else if (validation.length === 0){
     domUpdateMethods.loginErrorMessage();
-  }
+  };
 };
 
 const displayBookings = () => {
@@ -125,7 +121,7 @@ const displayBookings = () => {
     availableRoomsByDate(selectDateInput.value);
   } else if (searchByTypeInput.value === 'all' && selectDateInput.value === '') {
     domUpdateMethods.searchErrorMessage();
-  }
+  };
 };
 
 const makePostBookingObj = (e) => {
@@ -158,10 +154,10 @@ const availableRoomsByDate = (date) => {
           acc = false;
         }
         return acc;
-      }, true)
-    }
+      }, true);
+    };
     allBookings.roomsAvailable = allBookings.roomsAvailable.filter((room) => checkRooms(room));
-    domUpdateMethods.loadCurrentOpenings(allBookings.roomsAvailable)
+    domUpdateMethods.loadCurrentOpenings(allBookings.roomsAvailable);
   }
 };
 
