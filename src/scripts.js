@@ -59,8 +59,6 @@ bookARoomButton.addEventListener('click', function() {
 
 searchButton.addEventListener('click', function() {
   event.preventDefault();
-  console.log("YOU HIT THE SEARCH BUTTON");
-  console.log(searchByTypeInput.value, selectDateInput.value);
   displayBookings();
 })
 
@@ -89,6 +87,7 @@ const loadCustomerData = (id) => {
       domUpdateMethods.displayUserName(currentCustomer);
       domUpdateMethods.displayUserTotals(currentCustomer);
       domUpdateMethods.dislayCustomerBookingCards(currentCustomer);
+      // domUpdateMethods.changeCalendarMin();
   });
 }
 
@@ -115,7 +114,6 @@ const loginValidation = (username, password) => {
 
   if(validation.length === 1) {
     loadCustomerData(getCustomerId());
-    console.log("load new page");
   } else if (validation.length === 0){
     domUpdateMethods.loginErrorMessage();
   }
@@ -123,10 +121,8 @@ const loginValidation = (username, password) => {
 
 const displayBookings = () => {
   if(searchByTypeInput.value !== 'all'){
-    console.log("SEARCH BY TYPE")
     allBookings.availableRoomsByType(searchByTypeInput.value, selectDateInput.value)
   } else if (searchByTypeInput.value === 'all' && selectDateInput.value !== '') {
-    console.log("SEARCH BY DATE")
     allBookings.availableRoomsByDate(selectDateInput.value)
   } else if (searchByTypeInput.value === 'all' && selectDateInput.value === '') {
     domUpdateMethods.searchErrorMessage();
@@ -135,14 +131,11 @@ const displayBookings = () => {
 
 const makePostBookingObj = (e) => {
   let updatedDate = selectDateInput.value;
-  console.log("DATE AT INPUT", updatedDate)
   let thisDate = updatedDate.replace('-', '/');
   let thisDate1 = thisDate.replace('-', '/');
-  console.log("ROOM NUMBER FOR POST", e.target.id);
-  console.log("UPDATED DATE", thisDate1);
-return {
-  "userID": currentCustomer.id,
-  "date": thisDate1,
-  "roomNumber": Number(e.target.id)
-  }
+  return {
+    "userID": currentCustomer.id,
+    "date": thisDate1,
+    "roomNumber": Number(e.target.id)
+  };
 }
