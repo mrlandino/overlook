@@ -6,10 +6,6 @@ class Room {
     this.bidet = booking.bidet;
     this.numBeds = booking.numBeds;
     this.roomType = booking.roomType;
-    // this.date = booking.date;
-    // this.currentDate = booking.currentDate;
-    // this.timeStamp = booking.timeStamp;
-    // this.displayDate = booking.displayDate;
   }
 }
 

@@ -1,7 +1,6 @@
 import './css/styles.css';
 import { getAllData, getSpecificData, postBooking } from './apiCalls';
 import AllCustomers from './AllCustomers';
-import AllRooms from './AllRooms';
 import BookingsRepo from './BookingsRepo';
 import Booking from './Booking';
 import Customer from './Customer';
@@ -55,12 +54,12 @@ myBookingsButton.addEventListener('click', function() {
 bookARoomButton.addEventListener('click', function() {
   event.preventDefault();
   domUpdateMethods.loadBookingsPage(currentCustomer);
-})
+});
 
 searchButton.addEventListener('click', function() {
   event.preventDefault();
   displayBookings();
-})
+});
 
 allBookingsDisplayContainer.addEventListener('click', function(e) {
   if(e.target.classList.contains("book-room")) {
@@ -73,14 +72,14 @@ allBookingsDisplayContainer.addEventListener('click', function(e) {
       })
     })
   }
-})
+});
 
 //RENDER ALL DATA:
 const loadCustomerData = (id) => {
   getAllData(id)
   .then((data) => {
       allCustomers = new AllCustomers(data[0]);
-      allRooms = new AllRooms(data[1]);
+      allRooms = data[1];
       allBookings = new BookingsRepo(data[2], allRooms);
       currentCustomer = new Customer(data[3], allBookings);
       domUpdateMethods.loadCustomerDashboard();
@@ -89,19 +88,19 @@ const loadCustomerData = (id) => {
       domUpdateMethods.dislayCustomerBookingCards(currentCustomer);
       // domUpdateMethods.changeCalendarMin();
   });
-}
+};
 
 const loadWindow = () => {
   getSpecificData('customers')
   .then((data) => {
     allCustomers = data.customers
   });
-}
+};
 
 const getCustomerId = () => {
   let userID = username.value.replace('customer', '');
   return Number(userID);
-}
+};
 
 const loginValidation = (username, password) => {
   let masterPassword = "overlook2021";
@@ -117,17 +116,17 @@ const loginValidation = (username, password) => {
   } else if (validation.length === 0){
     domUpdateMethods.loginErrorMessage();
   }
-}
+};
 
 const displayBookings = () => {
   if(searchByTypeInput.value !== 'all'){
-    allBookings.availableRoomsByType(searchByTypeInput.value, selectDateInput.value)
+    availableRoomsByType(searchByTypeInput.value, selectDateInput.value);
   } else if (searchByTypeInput.value === 'all' && selectDateInput.value !== '') {
-    allBookings.availableRoomsByDate(selectDateInput.value)
+    availableRoomsByDate(selectDateInput.value);
   } else if (searchByTypeInput.value === 'all' && selectDateInput.value === '') {
     domUpdateMethods.searchErrorMessage();
   }
-}
+};
 
 const makePostBookingObj = (e) => {
   let updatedDate = selectDateInput.value;
@@ -138,4 +137,40 @@ const makePostBookingObj = (e) => {
     "date": thisDate1,
     "roomNumber": Number(e.target.id)
   };
+}
+
+const availableRoomsByDate = (date) => {
+  allBookings.roomsAvailable = allBookings.allRoomsMaster;
+
+  if(date === '') {
+    domUpdateMethods.searchErrorMessage();
+  } else if (date !== ''){
+    let thisDate = date.replace('-', '/');
+    let thisDate1 = thisDate.replace('-', '/');
+
+    let booked = allBookings.allBookingsMaster.filter(booking => {
+      return booking.date === thisDate1;
+    })
+
+    let checkRooms = (room) => {
+      return booked.reduce((acc, booking) => {
+        if(booking.roomNumber === room.roomNumber) {
+          acc = false;
+        }
+        return acc;
+      }, true)
+    }
+    allBookings.roomsAvailable = allBookings.roomsAvailable.filter((room) => checkRooms(room));
+    domUpdateMethods.loadCurrentOpenings(allBookings.roomsAvailable)
+  }
+};
+
+const availableRoomsByType = (type, date) => {
+  availableRoomsByDate(date);
+  if(date !== '' && type !== '') {
+    allBookings.roomsAvailable = allBookings.roomsAvailable.filter(room => {
+      return room.roomType === type;
+    });
+    domUpdateMethods.loadCurrentOpenings(allBookings.roomsAvailable);
+  }
 }
