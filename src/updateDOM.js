@@ -9,6 +9,7 @@ let customerBookingsContainer = document.querySelector(".customer-bookings-displ
 let allBookingsDisplayContainer = document.querySelector(".all-bookings-display-container");
 let passwordContainer = document.querySelector(".password-usename-error-container");
 
+
 const domUpdateMethods = {
 
   loginErrorMessage() {
@@ -146,11 +147,15 @@ const domUpdateMethods = {
     domUpdateMethods.hideElement([bookingCard]);
   },
 
-//**** ADDITION TO BE MADE ****
-  // changeCalendarMin() {
-  //   var dateControl = document.querySelector('input[type="date"]');
-  //   dateControl.value = new Date();
-  // }
+  changeCalendarMin() {
+    let today = new Date()
+    let dd = today.getDate()
+    let mm = `0${today.getMonth() +1}`
+    let yyyy = today.getFullYear()
+    let calendarDate = `${yyyy}-${mm}-${dd}`
+    let bookingDateSelection = document.querySelector(".select-date-input");
+    bookingDateSelection.setAttribute("min", calendarDate);
+  }
 }
 
 export default domUpdateMethods;
